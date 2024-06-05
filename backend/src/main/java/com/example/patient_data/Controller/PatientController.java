@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,6 +46,13 @@ public class PatientController {
     public ResponseEntity<Patient> getPatientById(@PathVariable Integer id) {
         Optional<Patient> patient = patientService.getPatientById(id);
         return patient.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    //edit or put mapping
+    @PutMapping("/patients/{id}")
+    public ResponseEntity<Patient> updatePatient(@PathVariable Integer id, @RequestBody Patient patient) throws Exception {
+        Patient updatedPatient = patientService.updatedPatient(id, patient);
+        return ResponseEntity.ok(updatedPatient);
     }
 
 
