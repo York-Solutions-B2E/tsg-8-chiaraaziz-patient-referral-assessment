@@ -1,14 +1,15 @@
 package com.example.patient_data.entity;
 
-//import jakarta.persistence.*;
-
 import java.util.Date;
 
-//@Entity
-//@Table(name= "patients")
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name= "patient")
 public class Patient {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     private int id;
     private String name;
     private Date dateOfBirth;
