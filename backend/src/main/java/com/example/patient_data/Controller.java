@@ -32,12 +32,7 @@ public class Controller {
         return "Hello World yo!";
     }   
 
-    @RequestMapping("/dashboard")
-    public List<Patient> Patients()
-    {
-        return patientRepository.findAll().stream().toList();
-        
-    }
+    
 
     @GetMapping("/dashboardInsert1")
     public Patient patientInsert() {
@@ -67,21 +62,5 @@ public class Controller {
     }
 
 
-
-    // @RequestMapping("/dashboard")
-    // public List<Patient> Patients()
-    // {
-    //     // TODO: make this pull from DB in future
-    //     Patient patient1 = new Patient();
-    //     patient1.setName("Dork");
-    //     Patient patient2 = new Patient();
-    //     patient2.setName("Nerd");
-
-    //     List<Patient> patients = new ArrayList<Patient>();
-    //     patients.add(patient1);
-    //     patients.add(patient2);
-
-    //     return patients;
-    // }
 
 }
