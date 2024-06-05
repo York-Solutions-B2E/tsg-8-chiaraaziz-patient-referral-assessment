@@ -15,4 +15,5 @@ export class DataService {
     return this.http.get('http://localhost:8080/hello', {responseType:'text'})
     
   }
+
 }
