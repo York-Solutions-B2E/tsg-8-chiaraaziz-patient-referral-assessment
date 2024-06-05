@@ -1,22 +1,24 @@
 package com.example.patient_data.entity;
 
-//import jakarta.persistence.*;
-
+import java.time.LocalDate;
 import java.util.Date;
 
-//@Entity
-//@Table(name= "patients")
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name= "patient")
 public class Patient {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     private int id;
     private String name;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String contactInfo;
     private String reasonForReferral;
     private String referralStatus;
-    private Date createdAt;
-    private Date updatedAt;
+    private LocalDate createdAt;
+    private LocalDate updatedAt;
 
     public int getId() {
         return id;
@@ -34,11 +36,11 @@ public class Patient {
         this.name = name;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -66,19 +68,19 @@ public class Patient {
         this.referralStatus = referralStatus;
     }
 
-    public Date getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
 }
