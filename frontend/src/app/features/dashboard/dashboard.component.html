@@ -1,6 +1,11 @@
 
 <mat-toolbar>
-    <span>Welocme to your Dashboard!</span>
+    <span>Welcome to your Dashboard!</span>
+    <span></span>
+    <br>
+    <a routerLink="/patient">
+        <button mat-raised-button color="accent">Add a Patient Referral</button>
+    </a>
   </mat-toolbar>
 <div>
     <div class="content-box" *ngFor="let patient of patients">
