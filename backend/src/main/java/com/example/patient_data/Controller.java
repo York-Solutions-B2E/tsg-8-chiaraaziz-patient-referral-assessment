@@ -1,12 +1,17 @@
 package com.example.patient_data;
 
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.patient_data.entity.Patient;
+import netscape.javascript.JSObject;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+@RestController()
 @CrossOrigin(origins = "http://localhost:4200")
 // Class
 public class Controller {
@@ -17,6 +22,34 @@ public class Controller {
         // Print and display name and age
         //System.out.println(name);
         //System.out.println(age);
-        return "Hello World yo!" ;
+        return "Hello World yo!";
     }
+//    @GetMapping("/dashboard")
+//    public JSObject getAllPatients() {
+//        JSObject jsObject = new JSObject();
+//        jsObject.setMember("Tony Stark");
+//        return jsObject;
+//    }
+
+//    @RequestMapping(value = "/dashboard", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    String getTest() {
+//        return "/test.json";
+//    }
+
+    @RequestMapping("/dashboard")
+    public List<Patient> Patients()
+    {
+        // TODO: make this pull from DB in future
+        Patient patient1 = new Patient();
+        patient1.setName("Dork");
+        Patient patient2 = new Patient();
+        patient2.setName("Nerd");
+
+        List<Patient> patients = new ArrayList<Patient>();
+        patients.add(patient1);
+        patients.add(patient2);
+
+        return patients;
+    }
+
 }
