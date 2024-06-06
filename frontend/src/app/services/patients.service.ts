@@ -11,6 +11,6 @@ export class PatientsService {
   constructor(private http: HttpClient) { }
 
   getPatientById(id:string): Observable<Patient>{
-    return this.http.get<Patient>(`/patients/${id}`);
+    return this.http.get<Patient>(`http://localhost:8080/patients/${id}`);
   }
 }
