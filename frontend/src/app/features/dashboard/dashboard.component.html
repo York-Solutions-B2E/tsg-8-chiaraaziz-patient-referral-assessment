@@ -17,8 +17,9 @@
       </mat-toolbar>
 
     <div class="content-box" *ngFor="let patient of patients">
+        <h3>{{patient.name}}</h3>
         <a routerLink="/patients/{{patient.id}}">
-            <h3>{{patient.name}}</h3>
+            <button mat-raised-button color="accent">Patient Details</button>
         </a>
         <router-outlet></router-outlet>
         
