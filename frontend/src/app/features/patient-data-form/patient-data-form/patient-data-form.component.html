@@ -1,6 +1,6 @@
 <p>patient-data-form works!</p>
 
-<form [formGroup]="userForm" class="form-container">
+<form [formGroup]="userForm" class="form-container" (ngSubmit)="submitForm()">
     <mat-card>
       <mat-card-header>
         <mat-card-title>Patient Information</mat-card-title>
@@ -9,29 +9,51 @@
         <div class="row">
           <div class="col-md-6">
             <mat-form-field class="full-width">
-              <input formControlName="name" matInput placeholder="Patient name">
+              <input formControlName="name" matInput placeholder="Patient name" required>
+              <div *ngIf="userForm?.get('name')?.invalid && userForm?.get('name')?.touched" class="text-danger">
+                Name is required.
+              </div>
             </mat-form-field>
           </div>
-          <div class="col-md-6">
-            <mat-form-field class="full-width">
-              <input  formControlName="lastName" matInput placeholder="Last name">
-            </mat-form-field>
-          </div>
+          
         </div>
         <div class="row">
-          <div class="col-sm-6">
+          <!-- <div class="col-sm-6">
             <mat-form-field class="full-width">
               <textarea  formControlName="address" matInput placeholder="Address"></textarea>
             </mat-form-field>
-          </div>
-          <h4>Basic native select</h4>
+          </div> -->
           <div class="row">
             <mat-form-field>
-                <mat-label>Referral Status</mat-label>
+                <mat-label>Contact Info</mat-label>
+                <input type="tel" formControlName="contactInfo" matInput required />
+                <mat-icon matSuffix>phone</mat-icon>
+                <div *ngIf="userForm?.get('contactInfo')?.invalid && userForm?.get('contactInfo')?.touched" class="text-danger">
+                    Please enter a valid mobile number.
+                  </div>
+            </mat-form-field>
+
+          </div>
+         
+          <div class="row">
+            <mat-form-field>
+                <mat-label color="white">Referral Status</mat-label>
                 <select matNativeControl required>
                     <option value="accepted">Accepted</option>
                     <option value="pening">Pending</option>
                     <option value="declined">Declined</option>
+                </select>
+            </mat-form-field>
+
+          </div>
+          <div class="row">
+            <mat-form-field>
+                <mat-label>Referral Reason</mat-label>
+                <select matNativeControl required placeholder="select a reason">
+                    <option value="accepted">Second Opinion</option>
+                    <option value="accepted">Second Opinion</option>
+                    <option value="pening">Certain Death</option>
+                    <option value="declined">Needs Treatment</option>
                 </select>
             </mat-form-field>
 
@@ -41,23 +63,16 @@
           <div class="col-md-6 top-padding">
                 <mat-form-field class="full-width" appearance="fill">
                     <mat-label>Select DOB</mat-label>
-                    <input  formControlName="dateOfBirth" matInput [matDatepicker]="picker">
+                    <input  formControlName="dateOfBirth" matInput [matDatepicker]="picker" required>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>                  
             </div>
         </div>
-        <!-- <div class="row">
-            <div class="col-md-12">
-                <mat-radio-group  formControlName="gender" class="margin-left">
-                    <mat-radio-button value="male"> Male </mat-radio-button>
-                    <mat-radio-button value="female"> Female </mat-radio-button>
-                </mat-radio-group>
-            </div>
-        </div> -->
+       
       </mat-card-content>
       <mat-card-actions>
-        <button (click)="submit()" mat-raised-button color="primary">Save</button>
+        <button type="submit" mat-raised-button >Save</button>
       </mat-card-actions>
     </mat-card>
   </form>

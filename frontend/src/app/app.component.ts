@@ -18,11 +18,11 @@ export class AppComponent {
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.getData().subscribe(response => {
-      this.data = response ;
-      console.log(this.data);
+    // this.dataService.getData().subscribe(response => {
+    //   this.data = response ;
+    //   console.log(this.data);
       
-    })
+    // })
   }
 
 }

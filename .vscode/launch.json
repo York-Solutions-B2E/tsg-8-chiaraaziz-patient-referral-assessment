@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "PatientDataApplication",
+            "request": "launch",
+            "mainClass": "com.example.patient_data.PatientDataApplication",
+            "projectName": "patient-data"
+        },
+        {
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",

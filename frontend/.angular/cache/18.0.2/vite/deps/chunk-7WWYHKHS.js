@@ -1,7 +1,7 @@
 import {
   DOCUMENT,
   isPlatformBrowser
-} from "./chunk-NUPPKWAU.js";
+} from "./chunk-F6HEWYI6.js";
 import {
   ANIMATION_MODULE_TYPE,
   APP_ID,
@@ -76,7 +76,7 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate1,
   ɵɵviewQuery
-} from "./chunk-NQP6OIXN.js";
+} from "./chunk-A2IGR37M.js";
 
 // node_modules/@angular/cdk/fesm2022/platform.mjs
 var hasV8BreakIterator;
@@ -138,50 +138,6 @@ var PlatformModule = _PlatformModule;
     args: [{}]
   }], null, null);
 })();
-var supportedInputTypes;
-var candidateInputTypes = [
-  // `color` must come first. Chrome 56 shows a warning if we change the type to `color` after
-  // first changing it to something else:
-  // The specified value "" does not conform to the required format.
-  // The format is "#rrggbb" where rr, gg, bb are two-digit hexadecimal numbers.
-  "color",
-  "button",
-  "checkbox",
-  "date",
-  "datetime-local",
-  "email",
-  "file",
-  "hidden",
-  "image",
-  "month",
-  "number",
-  "password",
-  "radio",
-  "range",
-  "reset",
-  "search",
-  "submit",
-  "tel",
-  "text",
-  "time",
-  "url",
-  "week"
-];
-function getSupportedInputTypes() {
-  if (supportedInputTypes) {
-    return supportedInputTypes;
-  }
-  if (typeof document !== "object" || !document) {
-    supportedInputTypes = new Set(candidateInputTypes);
-    return supportedInputTypes;
-  }
-  let featureTestInput = document.createElement("input");
-  supportedInputTypes = new Set(candidateInputTypes.filter((value) => {
-    featureTestInput.setAttribute("type", value);
-    return featureTestInput.type === value;
-  }));
-  return supportedInputTypes;
-}
 var supportsPassiveEvents;
 function supportsPassiveEventListeners() {
   if (supportsPassiveEvents == null && typeof window !== "undefined") {
@@ -204,55 +160,6 @@ var RtlScrollAxisType;
   RtlScrollAxisType2[RtlScrollAxisType2["NEGATED"] = 1] = "NEGATED";
   RtlScrollAxisType2[RtlScrollAxisType2["INVERTED"] = 2] = "INVERTED";
 })(RtlScrollAxisType || (RtlScrollAxisType = {}));
-var rtlScrollAxisType;
-var scrollBehaviorSupported;
-function supportsScrollBehavior() {
-  if (scrollBehaviorSupported == null) {
-    if (typeof document !== "object" || !document || typeof Element !== "function" || !Element) {
-      scrollBehaviorSupported = false;
-      return scrollBehaviorSupported;
-    }
-    if ("scrollBehavior" in document.documentElement.style) {
-      scrollBehaviorSupported = true;
-    } else {
-      const scrollToFunction = Element.prototype.scrollTo;
-      if (scrollToFunction) {
-        scrollBehaviorSupported = !/\{\s*\[native code\]\s*\}/.test(scrollToFunction.toString());
-      } else {
-        scrollBehaviorSupported = false;
-      }
-    }
-  }
-  return scrollBehaviorSupported;
-}
-function getRtlScrollAxisType() {
-  if (typeof document !== "object" || !document) {
-    return RtlScrollAxisType.NORMAL;
-  }
-  if (rtlScrollAxisType == null) {
-    const scrollContainer = document.createElement("div");
-    const containerStyle = scrollContainer.style;
-    scrollContainer.dir = "rtl";
-    containerStyle.width = "1px";
-    containerStyle.overflow = "auto";
-    containerStyle.visibility = "hidden";
-    containerStyle.pointerEvents = "none";
-    containerStyle.position = "absolute";
-    const content = document.createElement("div");
-    const contentStyle = content.style;
-    contentStyle.width = "2px";
-    contentStyle.height = "1px";
-    scrollContainer.appendChild(content);
-    document.body.appendChild(scrollContainer);
-    rtlScrollAxisType = RtlScrollAxisType.NORMAL;
-    if (scrollContainer.scrollLeft === 0) {
-      scrollContainer.scrollLeft = 1;
-      rtlScrollAxisType = scrollContainer.scrollLeft === 0 ? RtlScrollAxisType.NEGATED : RtlScrollAxisType.INVERTED;
-    }
-    scrollContainer.remove();
-  }
-  return rtlScrollAxisType;
-}
 var shadowDomIsSupported;
 function _supportsShadowDom() {
   if (shadowDomIsSupported == null) {
@@ -296,21 +203,11 @@ function _isTestEnvironment() {
 }
 
 // node_modules/@angular/cdk/fesm2022/keycodes.mjs
-var BACKSPACE = 8;
 var ENTER = 13;
 var SHIFT = 16;
 var CONTROL = 17;
 var ALT = 18;
-var ESCAPE = 27;
 var SPACE = 32;
-var PAGE_UP = 33;
-var PAGE_DOWN = 34;
-var END = 35;
-var HOME = 36;
-var LEFT_ARROW = 37;
-var UP_ARROW = 38;
-var RIGHT_ARROW = 39;
-var DOWN_ARROW = 40;
 var META = 91;
 var MAC_META = 224;
 function hasModifierKey(event, ...modifiers) {
@@ -333,27 +230,8 @@ function _isNumberValue(value) {
 function coerceArray(value) {
   return Array.isArray(value) ? value : [value];
 }
-function coerceCssPixelValue(value) {
-  if (value == null) {
-    return "";
-  }
-  return typeof value === "string" ? value : `${value}px`;
-}
 function coerceElement(elementOrRef) {
   return elementOrRef instanceof ElementRef ? elementOrRef.nativeElement : elementOrRef;
-}
-function coerceStringArray(value, separator = /\s+/) {
-  const result = [];
-  if (value != null) {
-    const sourceValues = Array.isArray(value) ? value : `${value}`.split(separator);
-    for (const sourceValue of sourceValues) {
-      const trimmedString = `${sourceValue}`.trim();
-      if (trimmedString) {
-        result.push(trimmedString);
-      }
-    }
-  }
-  return result;
 }
 
 // node_modules/@angular/cdk/fesm2022/observers.mjs
@@ -4807,40 +4685,7 @@ var _MatInternalFormField = __MatInternalFormField;
 
 export {
   Platform,
-  getSupportedInputTypes,
-  normalizePassiveListenerOptions,
-  RtlScrollAxisType,
-  supportsScrollBehavior,
-  getRtlScrollAxisType,
-  _getFocusedElementPierceShadowDom,
-  _getEventTarget,
-  _isTestEnvironment,
-  BACKSPACE,
-  ENTER,
-  ESCAPE,
-  SPACE,
-  PAGE_UP,
-  PAGE_DOWN,
-  END,
-  HOME,
-  LEFT_ARROW,
-  UP_ARROW,
-  RIGHT_ARROW,
-  DOWN_ARROW,
-  hasModifierKey,
-  coerceBooleanProperty,
-  coerceNumberProperty,
-  coerceArray,
-  coerceCssPixelValue,
-  coerceElement,
-  coerceStringArray,
-  ObserversModule,
-  CdkTrapFocus,
   FocusMonitor,
-  CdkMonitorFocus,
-  A11yModule,
-  Directionality,
-  BidiModule,
   VERSION2 as VERSION,
   AnimationCurves,
   AnimationDurations,
@@ -4887,4 +4732,4 @@ export {
   MatRippleLoader,
   _MatInternalFormField
 };
-//# sourceMappingURL=chunk-P5Q3QV62.js.map
+//# sourceMappingURL=chunk-7WWYHKHS.js.map

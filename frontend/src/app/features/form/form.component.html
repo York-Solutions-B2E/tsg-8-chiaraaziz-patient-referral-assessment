@@ -1,0 +1,99 @@
+<p>form works!</p>
+
+
+    <form class="form" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+        <div class="field">
+            <label class="label">Name</label>
+            <input type="text" class="input" formControlName="name" 
+                [class.invalid]="patientForm.get('name')?.invalid && (patientForm.get('name')?.dirty || patientForm.get('name')?.touched)"/>
+            <span 
+                *ngIf="patientForm.get('name')?.invalid && (patientForm.get('name')?.dirty || patientForm.get('name')?.touched)"
+                class="error"> This field is required!
+
+            </span>    
+        </div>
+
+        <div class="field">
+            <label class="label">Date Of Birth</label>
+            <input type="date" class="input" formControlName="dateOfBirth"
+            [class.invalid]="patientForm.get('dateOfBirth')?.invalid && (patientForm.get('dateOfBirth')?.dirty || patientForm.get('dateOfBirth')?.touched)"/>
+            <span
+            *ngIf="patientForm.get('dateOfBirth')?.hasError('dateOfBirth') && (patientForm.get('dateOfBirth')?.dirty || patientForm.get('dateOfBirth')?.touched)"
+            class="error"
+                >This field is required
+            </span>
+        </div>
+
+        <div class="field">
+            <label class="label">Contact Info</label>
+            <input type="text" class="input" formControlName="contactInfo"/>
+            <span 
+                *ngIf="patientForm.get('contactInfo')?.invalid && (patientForm.get('contactInfo')?.dirty || patientForm.get('contactInfo')?.touched)"
+                class="error"> This field is required!
+
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label class="label">Referral Reason</label>
+            <select  class="form-control" formControlName="referralReason">
+                <option value="" disabled>Select Option</option>
+                <option value="Certain death">Certain death</option>
+                <option value="Second Opinion">Second Opinion</option>
+                <option value="Other">Other</option>
+
+            </select> 
+            
+            <span 
+                *ngIf="patientForm.get('referralReason')?.invalid && (patientForm.get('referralReason')?.dirty || patientForm.get('nareferralReasonme')?.touched)"
+                class="error"> This field is required!
+
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label class="label">Referral Status</label>
+            <select  class="form-control" formControlName="referralStatus">
+                <option value="" disabled>Select Option</option>
+                <option value="accepted">Accepted</option>
+                <option value="declined">Declined</option>
+                <option value="Pending">Pending</option>
+
+            </select> 
+            
+            <span 
+                *ngIf="patientForm.get('referralReason')?.invalid && (patientForm.get('referralReason')?.dirty || patientForm.get('nareferralReasonme')?.touched)"
+                class="error"> This field is required!
+
+            </span>
+        </div>
+
+        <div>
+            <button type="submit" class="button">Submit</button>
+        </div>
+
+    </form>
+
+    
+
+
+<!-- <form action="" (submit)="onSubmit()">
+    <div>
+        <div>Name</div>
+        <input type="text" placeholder="Name" name="name" [(ngModel)]="user.name"/>
+        @if(!user.name){<p>"Please ente a name"</p>}
+    </div>
+
+    <div>
+        <div>Email</div>
+        <input type="email" placeholder="email" name="email" [(ngModel)]="user.email"/>
+        
+    </div>
+
+    <div>
+        <div>Password</div>
+        <input type="password" placeholder="password" name="password" [(ngModel)]="user.password"/>
+    </div>
+    <button type="submit">Submit</button>
+
+</form> -->
