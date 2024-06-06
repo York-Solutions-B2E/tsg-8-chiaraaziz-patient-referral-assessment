@@ -14,6 +14,6 @@ export class PatientsService {
     return this.http.get<Patient>(`http://localhost:8080/patients/${id}`);
   }
   deletePatientById(id:string): Observable<Patient> {
-    return this.http.delete<Patient>(`/patients/${id}`)
+    return this.http.delete<Patient>(`http://localhost:8080/patients/${id}`)
   }
 }

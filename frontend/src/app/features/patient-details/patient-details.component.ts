@@ -18,7 +18,7 @@ export class PatientDetailsComponent {
   patients!: Patient[];
 
   patient!: Patient;
-  testId!: string;
+  id!: string;
   
 
   constructor(
@@ -29,10 +29,10 @@ export class PatientDetailsComponent {
   ngOnInit(){
     
     this.route.params.subscribe(params => {
-      this.testId = params['id']; // Access the 'id' parameter from the URL
-      console.log('Test ID:', this.testId);})
+      this.id = params['id']; // Access the 'id' parameter from the URL
+      console.log('id to delete:', this.id);})
    
-    this.patientService.getPatientById(this.testId!).subscribe(response => {
+    this.patientService.getPatientById(this.id!).subscribe(response => {
       this.patient = response;
       console.log(this.patient);
     })
