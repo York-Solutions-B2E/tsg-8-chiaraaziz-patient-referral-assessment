@@ -2,7 +2,10 @@ package com.example.patient_data.entity;
 
 import java.time.LocalDate;
 
+import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -10,6 +13,7 @@ import jakarta.persistence.Table;
 @Table(name= "patient")
 public class Patient {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private LocalDate dateOfBirth;

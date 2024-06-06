@@ -3,7 +3,7 @@ export interface Patient {
     name: string,
     dateOfBirth: string,
     contactInfo: string,
-    reasonForReferral: string,
+    referralReason: string,
     referralStatus: string,
     createdAt: string,
     updatedAt: string
