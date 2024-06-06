@@ -5,12 +5,20 @@ import {MatCardModule} from '@angular/material/card';
 import { Patient } from '../../types';
 import { PatientsService } from '../../services/patients.service';
 import { MatButton } from '@angular/material/button';
+import {
+  MatDialog,
+  MatDialogRef,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogTitle,
+  MatDialogContent,
+} from '@angular/material/dialog';
 
 
 @Component({
   selector: 'app-patient-details',
   standalone: true,
-  imports: [RouterOutlet, NgFor, RouterLink, MatCardModule, MatButton],
+  imports: [RouterOutlet, NgFor, RouterLink, MatCardModule, MatButton, MatDialogModule],
   templateUrl: './patient-details.component.html',
   styleUrl: './patient-details.component.css'
 })
@@ -20,10 +28,18 @@ export class PatientDetailsComponent {
   patient!: Patient;
   id!: string;
   
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(DialogAnimationsExampleDialog, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
 
   constructor(
     private patientService: PatientsService,
     private route: ActivatedRoute,
+    public dialog: MatDialog
   ){}
 
   ngOnInit(){
