@@ -4,5 +4,5 @@ import { PatientDetailsComponent } from "./features/patient-details/patient-deta
 export const routes: Routes = [
     {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
     {path: 'dashboard', component: DashboardComponent},
-    {path: 'patients/{id}', component:PatientDetailsComponent}
+    {path: 'patients/:id', component:PatientDetailsComponent}
 ]
