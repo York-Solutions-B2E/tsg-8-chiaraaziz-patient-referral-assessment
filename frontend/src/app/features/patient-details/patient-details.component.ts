@@ -4,17 +4,18 @@ import { RouterOutlet, RouterLink, ActivatedRoute } from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
 import { Patient } from '../../types';
 import { PatientsService } from '../../services/patients.service';
+import { MatButton } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-patient-details',
   standalone: true,
-  imports: [RouterOutlet, NgFor, RouterLink, MatCardModule],
+  imports: [RouterOutlet, NgFor, RouterLink, MatCardModule, MatButton],
   templateUrl: './patient-details.component.html',
   styleUrl: './patient-details.component.css'
 })
 export class PatientDetailsComponent {
-  
+  patients!: Patient[];
 
   patient!: Patient;
   testId!: string;
@@ -36,5 +37,10 @@ export class PatientDetailsComponent {
       console.log(this.patient);
     })
   }
+  onDeleteClicked(id: string): void{
+    this.patientService.deletePatientById(id).subscribe(() => {
+      this.patients = this.patients.filter(patient => patient.id !== id);
+    })
+  } 
 
 }

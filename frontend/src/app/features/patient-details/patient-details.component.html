@@ -25,5 +25,6 @@
       <p>Referral Status: {{patient.referralStatus}}</p>
       <p>Date Created: {{patient.createdAt}}</p>
       <p>Date Updated: {{patient.updatedAt}}</p>
+      <button (click)="onDeleteClicked(patient.id)" mat-raised-button color="accent">Delete Patient</button>
 
 </div>

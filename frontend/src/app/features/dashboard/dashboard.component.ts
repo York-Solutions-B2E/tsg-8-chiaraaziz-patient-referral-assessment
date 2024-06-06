@@ -6,7 +6,8 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-
+import { PatientsService } from '../../services/patients.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -18,8 +19,13 @@ import {MatIconModule} from '@angular/material/icon';
 })
 export class DashboardComponent {
   patients: Patient[] = [];
+  patient!: Patient;
+  id!: string;
 
-  constructor(private dashboardService: DashboardService){}
+  constructor(private dashboardService: DashboardService,
+    private patientService: PatientsService,
+    private route: ActivatedRoute,
+  ){}
 
   ngOnInit(){
    this.dashboardService.getPatients().subscribe(response => {
@@ -27,6 +33,11 @@ export class DashboardComponent {
     console.log(this.patients);
     
    })
+
+   
   }
+  
+  
+
 
 }
