@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { DataService } from './data.service';
+
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -14,14 +14,14 @@ import { NgIf } from '@angular/common';
 export class AppComponent {
   data:string = '';
   
-  constructor(private dataService: DataService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.dataService.getData().subscribe(response => {
-      this.data = response ;
-      console.log(this.data);
+    // this.dataService.getData().subscribe(response => {
+    //   this.data = response ;
+    //   console.log(this.data);
       
-    })
+    // })
   }
 
 }

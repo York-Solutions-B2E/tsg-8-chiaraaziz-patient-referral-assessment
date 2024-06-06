@@ -1,9 +1,9 @@
 export interface Patient {
     id: string,
     name: string,
-    dateOfBrith: string,
+    dateOfBirth: string,
     contactInfo: string,
-    reasonForReferral: string,
+    referralReason: string,
     referralStatus: string,
     createdAt: string,
     updatedAt: string

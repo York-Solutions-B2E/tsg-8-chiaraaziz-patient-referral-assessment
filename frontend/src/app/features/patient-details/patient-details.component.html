@@ -1,0 +1,29 @@
+<p>patient-details works!</p>
+
+<router-outlet></router-outlet>
+<div class="content-box">
+    <mat-card>
+        <mat-card-header>
+          <mat-card-title>Patient Name: {{patient.name}}</mat-card-title>
+          <mat-card-subtitle>Patient DOB: {{patient.dateOfBirth}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>Contact Info: {{patient.contactInfo}}</mat-card-content>
+        <mat-card-content>Contact Info: {{patient.contactInfo}}</mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+      <br>
+      
+
+
+      <h2>Patient Name: {{patient.name}}</h2>
+      <p>Patient DOB: {{patient.dateOfBirth}}</p>
+      <p>Contact Info: {{patient.contactInfo}}</p>
+      <p>Reason for referral: {{patient.referralReason}}</p>
+      <p>Referral Status: {{patient.referralStatus}}</p>
+      <p>Date Created: {{patient.createdAt}}</p>
+      <p>Date Updated: {{patient.updatedAt}}</p>
+
+</div>
