@@ -1,10 +1,27 @@
 
 <div>
+    <mat-toolbar>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Welcome to your Dashboard</span>
+        <span class="example-spacer"></span>
+        <a routerLink="/patient">
+            <button  mat-raised-button color="accent">
+                Add New Patient
+              </button>
+
+        </a>
+        
+       
+      </mat-toolbar>
+
     <div class="content-box" *ngFor="let patient of patients">
         <a routerLink="/patients/{{patient.id}}">
             <h3>{{patient.name}}</h3>
         </a>
         <router-outlet></router-outlet>
+        
         
         
     </div>
