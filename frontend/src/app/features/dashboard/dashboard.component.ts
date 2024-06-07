@@ -8,12 +8,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { PatientsService } from '../../services/patients.service';
 import { ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [NgFor, RouterLink, RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule],
+  imports: [NgFor, RouterLink, RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule, FormsModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -28,8 +29,8 @@ export class DashboardComponent {
   ){}
 
   ngOnInit(){
-   this.dashboardService.getPatients().subscribe(response => {
-    this.patients = response;
+   this.dashboardService.getPatients().subscribe(patients => {
+    this.patients = patients;
     console.log(this.patients);
     
    })
