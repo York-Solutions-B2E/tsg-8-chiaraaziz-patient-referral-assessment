@@ -25,14 +25,14 @@
       <p>Referral Status: {{patient.referralStatus}}</p>
       <p>Date Created: {{patient.createdAt}}</p>
       <p>Date Updated: {{patient.updatedAt}}</p>
-      <!-- <a routerLink="/dashboard">
-        
-        <button (click)="onDeleteClicked(patient.id)" mat-raised-button color="accent">Delete Patient</button>
-      </a> -->
+   
 
       <button mat-raised-button (click)="onDeleteClicked(id)" (click)="openDialog('0ms', '0ms')">Delete Patient</button>
       <!-- <app-dialog [inputFromParent]="id"></app-dialog> -->
 
+      <a routerLink="/edit-patients/{{patient.id}}">
+        <button mat-raised-button>Edit Patient</button>
+      </a>
       
       
       
