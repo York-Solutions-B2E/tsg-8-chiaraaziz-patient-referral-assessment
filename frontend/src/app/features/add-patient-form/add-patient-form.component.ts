@@ -24,7 +24,7 @@ export class AddPatientFormComponent {
     referralReason: '',
     referralStatus: '',
     createdAt: new Date(),
-    updatedAt: null
+    updatedAt: new Date()
   };
 
   patientForm = this.formBuilder.group({
