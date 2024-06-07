@@ -5,6 +5,7 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { PatientsService } from '../../services/patients.service';
 
 
+
 @Component({
   selector: 'app-edit-patient',
   standalone: true,
@@ -13,7 +14,9 @@ import { PatientsService } from '../../services/patients.service';
   styleUrl: './edit-patient.component.css'
 })
 export class EditPatientComponent {
+  public data: {} | undefined;
   patient?:Patient;
+  id!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,9 +25,17 @@ export class EditPatientComponent {
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.patient = fakeMyListings.find(listing => listing.id === id);
+    this.route.params.subscribe(params => {
+      this.id = params['id']; // Access the 'id' parameter from the URL
+    })
+   
+     this.patientService.getPatientById(this.id).subscribe(data => {
+        this.patient = data;
+        console.log('data from edit', this.patient);
+        
+     })
 
-  }
 
+
+}
 }

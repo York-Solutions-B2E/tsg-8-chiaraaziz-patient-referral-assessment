@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { PatientsService } from '../../services/patients.service';
 import { Patient } from '../../types';
@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrl: './add-patient-form.component.css'
 })
 export class AddPatientFormComponent {
+  @Input() buttonText: any;
   selectedReason: FormControl = new FormControl('');
   selectedStatus: FormControl = new FormControl('');
 
