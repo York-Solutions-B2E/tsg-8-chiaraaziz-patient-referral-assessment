@@ -31,4 +31,9 @@ export class PatientsService {
   // handelError(arg0: string, patient: Patient): (err: any, caught: Observable<Patient>) => import("rxjs").ObservableInput<any> {
   //   throw new Error('Could not add Patient at this time');
   // }
+
+  updatePatient(id:string, patient:Patient): Observable<Patient> {
+    
+    return this.http.put<Patient>(`http://localhost:8080/patients/${id}`, patient, httpOptions);
+  }
 }
