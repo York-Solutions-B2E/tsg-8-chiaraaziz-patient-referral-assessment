@@ -23,8 +23,8 @@ export class AddPatientFormComponent {
     contactInfo: '',
     referralReason: '',
     referralStatus: '',
-    createdAt: '',
-    updatedAt: ''
+    createdAt: new Date(),
+    updatedAt: null
   };
 
   patientForm = this.formBuilder.group({
@@ -47,8 +47,6 @@ export class AddPatientFormComponent {
   onDropDownChange(){
     this.patient.referralReason = this.selectedReason.value;
     this.patient.referralStatus = this.selectedStatus.value;
-    console.log(`option ${this.selectedReason.value}`);
-    console.log(`option ${this.selectedStatus.value}`);
     
   }
   
@@ -59,7 +57,7 @@ export class AddPatientFormComponent {
     this.patient.contactInfo = this.patientForm.value.contactInfo;
     this.patient.referralReason;
     this.patient.referralStatus;
-    // this.patientsService.addPatient(this.patient).subscribe(() => {this.router.navigateByUrl('dashboard')});
+    this.patientsService.addPatient(this.patient).subscribe(() => {this.router.navigateByUrl('/dashboard')});
     console.log('form data', this.patient);
     
   }

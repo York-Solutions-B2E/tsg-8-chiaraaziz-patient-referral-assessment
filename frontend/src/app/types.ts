@@ -5,7 +5,7 @@ export interface Patient {
     contactInfo: string | null |undefined,
     referralReason: string | null |undefined,
     referralStatus: string | null |undefined,
-    createdAt: string | null |undefined,
-    updatedAt: string | null |undefined
+    createdAt: Date,
+    updatedAt: Date | null |undefined
 
 }
