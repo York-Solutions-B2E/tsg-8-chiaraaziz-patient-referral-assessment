@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { PatientsService } from '../../services/patients.service';
 import { Patient } from '../../types';
 import { Router } from '@angular/router';
@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
   styleUrl: './add-patient-form.component.css'
 })
 export class AddPatientFormComponent {
+  selectedReason: FormControl = new FormControl('');
+  selectedStatus: FormControl = new FormControl('');
+
   patient: Patient= {
     id: '',
     name: '',
@@ -37,15 +40,27 @@ export class AddPatientFormComponent {
   constructor(private formBuilder: FormBuilder, private patientsService: PatientsService, private router:Router){}
 
   ngOnInit(): void {
-    // this.patient.name = this.patientForm.value.name;
+    
 
+    
+  }
+  onDropDownChange(){
+    this.patient.referralReason = this.selectedReason.value;
+    this.patient.referralStatus = this.selectedStatus.value;
+    console.log(`option ${this.selectedReason.value}`);
+    console.log(`option ${this.selectedStatus.value}`);
     
   }
   
 
   onSubmit():void {
-    // this.patientsService.addPatient(this.patient).subscribe(() => {this.router.navigateByUrl('/dashboard')});
-    console.log('form data', this.patientForm.value);
+    this.patient.name = this.patientForm.value.name;
+    this.patient.dateOfBirth = this.patientForm.value.dateOfBirth;
+    this.patient.contactInfo = this.patientForm.value.contactInfo;
+    this.patient.referralReason;
+    this.patient.referralStatus;
+    // this.patientsService.addPatient(this.patient).subscribe(() => {this.router.navigateByUrl('dashboard')});
+    console.log('form data', this.patient);
     
   }
 

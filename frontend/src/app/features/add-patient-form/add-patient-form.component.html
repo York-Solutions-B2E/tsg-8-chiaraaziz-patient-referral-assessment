@@ -34,7 +34,7 @@
 
         <div class="select">
             <label>Referral Reason</label>
-            <select>
+            <select  [formControl]="selectedReason" formControlName="referralReason" (change)="onDropDownChange()">
                 <label>Reason for Referral</label>
                 <option value="" >Select a Referral Reason</option>
                 <option value="Certain Death" >Certain Death</option>
@@ -46,7 +46,7 @@
 
         <div class="select">
             <label>Referral Status</label>
-            <select>
+            <select [formControl]="selectedStatus" formControlName="referralStatus" (change)="onDropDownChange()">
                 <label>Reason Status</label>
                 <option value="" >Referral Status</option>
                 <option value="Accepted">Accepted</option>
