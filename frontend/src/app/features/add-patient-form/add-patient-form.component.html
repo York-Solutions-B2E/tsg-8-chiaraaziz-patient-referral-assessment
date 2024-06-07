@@ -1,1 +1,68 @@
 <p>add-patient-form works!</p>
+
+<h1>Add a new patient</h1>
+<form class="form" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+    <div class="content-box">
+        <h2>Add a new patient referral</h2>
+        <div class="field">
+            <label class="label">Patient Name</label>
+            <input type="text"  class="input" formControlName="name" placeholder="full patient name"/>
+
+        </div>
+    
+        <div class="field">
+            <label>Date Of Birth</label>
+            <input type="date" formControlName="dateOfBirth"/>
+
+        </div>
+
+        <div class="field">
+            <label>Phone Numer</label>
+            <input type="tel" formControlName="contactInfo" placeholder="999-999-9999"/>
+
+        </div>
+
+        <div class="select">
+            <label>Referral Reason</label>
+            <select>
+                <label>Reason for Referral</label>
+                <option value="" disabled>Select a Referral Reason</option>
+                <option value="Certain Death" >Certain Death</option>
+                <option value="Second Opinion" >Second Opinion</option>
+                <option value="Other" >Other</option>
+            </select>
+
+        </div>
+
+        <div class="select">
+            <label>Referral Status</label>
+            <select>
+                <label>Reason Status</label>
+                <option value="" disabled>Referral Status</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Declined" >Declined</option>
+                <option value="Pending">Pending</option>
+            </select>
+           
+
+        </div>
+
+        <div>
+            <button type="submit">Submit Form</button>
+
+        </div>
+        
+        
+        
+        
+       
+    
+        
+    
+        
+    
+    </div>
+
+</form>
+
+
