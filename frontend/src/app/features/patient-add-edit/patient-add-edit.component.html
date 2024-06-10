@@ -3,12 +3,12 @@
 <form class="form" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
     <div class="content-box">
         <h2>
-            {{ pageType }}
+
             Patient Information
         </h2>
         <div class="field">
             <label class="label">Patient Name {{patientForm.get('name')}}</label>
-            <input type="text"  class="input" formControlName="name" placeholder="full patient name" required="name"
+            <input type="text"  class="input" formControlName="name" placeholder="full patient name" 
                 [class.invalid]="patientForm.get('name')?.invalid && (patientForm.get('name')?.dirty || patientForm.get('name')?.touched)"
             />
             <span
@@ -37,7 +37,7 @@
 
         <div class="select">
             <label>Referral Reason</label>
-            <select  [formControl]="selectedReason" formControlName="referralReason" (change)="onDropDownChange()">
+            <select  [formControl]="selectedReason" formControlName="selectedReason" (change)="onDropDownChange()">
                 <label>Reason for Referral</label>
                 <option value="" >Select a Referral Reason</option>
                 <option value="Certain Death" >Certain Death</option>
@@ -49,7 +49,7 @@
 
         <div class="select">
             <label>Referral Status</label>
-            <select [formControl]="selectedStatus" formControlName="referralStatus" (change)="onDropDownChange()">
+            <select [formControl]="selectedStatus" formControlName="selectedStatus" (change)="onDropDownChange()">
                 <label>Reason Status</label>
                 <option value="" >Referral Status</option>
                 <option value="Accepted">Accepted</option>
@@ -61,10 +61,12 @@
         </div>
 
         <div>
-            <button type="submit">{{buttonText}}</button>
+            <button type="submit" [disabled]="!patientForm.valid">{{buttonText}}</button>
         </div>
     </div>
 
 </form>
+<p>{{patientForm.status}}</p>
+<p>{{patientForm.getRawValue()}}</p>
 
 

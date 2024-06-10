@@ -15,17 +15,21 @@ import { NgIf } from '@angular/common';
 export class PatientAddEditComponent implements OnInit {
   @Input() buttonText: string = 'Save';
 
-  selectedReason: FormControl = new FormControl('');
-  selectedStatus: FormControl = new FormControl('');
-  
+
+  selectedReason: FormControl = new FormControl('', [Validators.required]);
+  selectedStatus: FormControl = new FormControl('', [Validators.required]);
+
   patient:Patient = {} as Patient;
   id: string = '';
   patientForm:FormGroup = this.formBuilder.group({
     name: ['', Validators.required],
-    dateOfBirth: ['', [Validators.required]],
+    dateOfBirth: ['', Validators.required],
     contactInfo: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
-    referralReason: ['', Validators.required],
-    referralStatus: ['', [Validators.required]],
+    // referralReason: new FormControl('', [Validators.required]),
+    // referralStatus: new FormControl('', [Validators.required])
+
+    // referralReason: ['', Validators.required],
+    // referralStatus: ['', Validators.required],
   })
 
 //checking to see if there is an id - there should always be an id for edit

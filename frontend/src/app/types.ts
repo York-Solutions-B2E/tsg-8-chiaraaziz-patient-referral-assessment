@@ -1,11 +1,11 @@
 export interface Patient {
     id: string,
     name: string 
-    dateOfBirth: string | null |undefined,
-    contactInfo: string | null |undefined,
-    referralReason: string | null |undefined,
-    referralStatus: string | null |undefined,
+    dateOfBirth: string,
+    contactInfo: string,
+    referralReason: string,
+    referralStatus: string,
     createdAt: Date,
-    updatedAt: Date | null |undefined
+    updatedAt: Date
 
 }
