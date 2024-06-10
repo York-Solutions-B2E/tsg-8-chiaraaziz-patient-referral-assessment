@@ -52,7 +52,7 @@
 
         </div>
 
-        <!-- <div class="select">
+        <div class="select">
             <label>Select Referral Status:</label>
             <select formControlName="referralStatus">Choose Reason
                 <option selected disabled value="" >Select a Referral Status</option>
@@ -60,8 +60,12 @@
                 <option value="Declined" >Declined</option>
                 <option value="Pending">Pending</option>
             </select>
+            <div class="invalid" *ngIf="patientForm.controls['referralStatus'].invalid && (isFormSubmitted || patientForm.controls['referralStatus'].touched ||patientForm.controls['referralStatus'].dirty)">
+                <span *ngIf="patientForm.controls['referralStatus'].errors?.['required']">Status required</span>
 
-        </div>   -->
+            </div>
+
+        </div>  
     
         
 <!-- 

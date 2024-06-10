@@ -39,7 +39,7 @@ export class PatientAddEditComponent implements OnInit {
     dateOfBirth: new FormControl('',[Validators.required]),
     contactInfo: new FormControl('',[Validators.required, Validators.pattern('[0-9]{3}-[0-9]{3}-[0-9]{4}')]),
     referralReason : new FormControl('',[Validators.required]),
-    // referralStatus: new FormControl(''),
+    referralStatus: new FormControl('', [Validators.required]),
     })
 
   //   // referralReason: ['', Validators.required],
@@ -76,7 +76,7 @@ export class PatientAddEditComponent implements OnInit {
           this.patientForm.controls['dateOfBirth'].setValue(this.patient.dateOfBirth);
           this.patientForm.controls['contactInfo'].setValue(this.patient.contactInfo);
           this.patientForm.controls['referralReason'].setValue(this.patient.referralReason);
-          // this.patientForm.controls['referralStatus'].setValue(this.patient.referralStatus);
+          this.patientForm.controls['referralStatus'].setValue(this.patient.referralStatus);
           console.log(this.patientForm.get('name'))
 
         });
@@ -101,6 +101,7 @@ export class PatientAddEditComponent implements OnInit {
       this.patient.dateOfBirth = this.patientForm.value.dateOfBirth;
       this.patient.contactInfo = this.patientForm.value.contactInfo;
       this.patient.referralReason = this.patientForm.value.referralReason;
+      this.patient.referralStatus = this.patientForm.value.referralStatus;
       
       console.log('phone is ok!!!', this.patient);
       
@@ -109,7 +110,7 @@ export class PatientAddEditComponent implements OnInit {
    
     
     
-    // this.patient.referralStatus;
+   
     // this.patient.createdAt = new Date();
     // this.patient.updatedAt = new Date();
 
