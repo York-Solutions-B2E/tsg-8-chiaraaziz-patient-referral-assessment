@@ -8,6 +8,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Spring Boot
 - SQL Server
 
+## Database
+- If using a Mac in order to run SQL Server you will need docker desktop. 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
