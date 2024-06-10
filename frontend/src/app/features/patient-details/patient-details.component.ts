@@ -7,13 +7,12 @@ import { PatientsService } from '../../services/patients.service';
 import { MatButton } from '@angular/material/button';
 import {MatDialog,} from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
-import { EditPatientComponent } from '../edit-patient/edit-patient.component';
 
 
 @Component({
   selector: 'app-patient-details',
   standalone: true,
-  imports: [RouterOutlet, NgFor, RouterLink, MatCardModule, MatButton, DialogComponent, EditPatientComponent, NgIf],
+  imports: [RouterOutlet, NgFor, RouterLink, MatCardModule, MatButton, DialogComponent, NgIf],
   templateUrl: './patient-details.component.html',
   styleUrl: './patient-details.component.css',
   
