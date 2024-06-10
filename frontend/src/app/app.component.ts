@@ -12,16 +12,12 @@ import { NgIf } from '@angular/common';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  data:string = '';
+  isAuthenticated = false;
   
   constructor() {}
 
   ngOnInit() {
-    // this.dataService.getData().subscribe(response => {
-    //   this.data = response ;
-    //   console.log(this.data);
-      
-    // })
+   
   }
 
 }

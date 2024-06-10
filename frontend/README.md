@@ -11,6 +11,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Database
 - If using a Mac in order to run SQL Server you will need docker desktop. 
 
+## Okta
+Install the okta cli with brew install --cask oktadeveloper/tap/okta
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
