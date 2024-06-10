@@ -25,9 +25,11 @@ export class PatientAddEditComponent implements OnInit {
     referralReason: ['', Validators.required],
     referralStatus: ['', [Validators.required]],
   })
+
   get isEdit(): boolean {
-    return this.id.length > 0;
+    return this.id?.length > 0 || false;
   }
+  
   get pageType(): string {
     return this.isEdit ? 'Edit' : 'Add';
   }
