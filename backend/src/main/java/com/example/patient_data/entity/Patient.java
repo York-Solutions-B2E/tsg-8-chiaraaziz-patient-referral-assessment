@@ -17,7 +17,7 @@ public class Patient {
     private String name;
     private LocalDate dateOfBirth;
     private String contactInfo;
-    private String reasonForReferral;
+    private String referralReason;
     private String referralStatus;
     private LocalDate createdAt;
     private LocalDate updatedAt;
@@ -54,13 +54,14 @@ public class Patient {
         this.contactInfo = contactInfo;
     }
 
-    public String getReasonForReferral() {
-        return reasonForReferral;
+    public String getReferralReason() {
+        return referralReason;
+    }
+    public void setReferralReason(String referralReason) {
+        this.referralReason = referralReason;
     }
 
-    public void setReasonForReferral(String reasonForReferral) {
-        this.reasonForReferral = reasonForReferral;
-    }
+    
 
     public String getReferralStatus() {
         return referralStatus;

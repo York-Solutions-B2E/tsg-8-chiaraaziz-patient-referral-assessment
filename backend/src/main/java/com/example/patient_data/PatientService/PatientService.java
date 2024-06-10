@@ -38,11 +38,11 @@ private  PatientRepository patientRepository;
    }
 
    //Update a patient
-   public Patient updatedPatient(Integer id, Patient updatedPatient) throws Exception {
+   public Patient updatePatient(Integer id, Patient updatedPatient) throws Exception {
     Optional<Patient> existingPatient = patientRepository.findById(id);
     if (existingPatient.isPresent()) {
         Patient patient = existingPatient.get();
-        patient.setReasonForReferral(updatedPatient.getReasonForReferral());
+        patient.setReferralReason(updatedPatient.getReferralReason());
         patient.setReferralStatus(updatedPatient.getReferralStatus());
         return patientRepository.save(patient);
     } else {

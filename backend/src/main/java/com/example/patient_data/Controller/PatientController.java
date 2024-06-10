@@ -52,7 +52,7 @@ public class PatientController {
     //edit or put mapping
     @PutMapping("/patient/{id}")
     public ResponseEntity<Patient> updatePatient(@PathVariable Integer id, @RequestBody Patient patient) throws Exception {
-        Patient updatedPatient = patientService.updatedPatient(id, patient);
+        Patient updatedPatient = patientService.updatePatient(id, patient);
         return ResponseEntity.ok(updatedPatient);
     }
 
