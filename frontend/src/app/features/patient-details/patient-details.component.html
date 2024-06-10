@@ -16,25 +16,19 @@
       </mat-card>
       <br>
       
-
-
       <h2>Patient Name: {{patient.name}}</h2>
       <p>Patient DOB: {{patient.dateOfBirth}}</p>
       <p>Contact Info: {{patient.contactInfo}}</p>
       <p>Reason for referral: {{patient.referralReason}}</p>
       <p>Referral Status: {{patient.referralStatus}}</p>
       <p>Date Created: {{patient.createdAt}}</p>
-      <p>Date Updated: {{patient.updatedAt}}</p>
-   
+      <p>Date Updated: {{patient.updatedAt}}</p>   
 
-      <button mat-raised-button (click)="onDeleteClicked(id)" (click)="openDialog('0ms', '0ms')">Delete Patient</button>
-      <!-- <app-dialog [inputFromParent]="id"></app-dialog> -->
+      <button mat-raised-button (click)="onDeleteClicked(id)" (click)="openDialog('0ms', '0ms')">
+        Delete Patient
+      </button>  
 
-      <a routerLink="/edit-patients/{{patient.id}}">
+      <a routerLink="/patient/{{patient.id}}/edit">
         <button mat-raised-button>Edit Patient</button>
       </a>
-      
-      
-      
-
 </div>

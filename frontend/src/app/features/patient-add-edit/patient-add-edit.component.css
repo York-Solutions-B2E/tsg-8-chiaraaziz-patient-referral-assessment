@@ -40,7 +40,7 @@
     border: 0;
     font-size: 18px;
     &:hover {
-      background: #0271da;
+      background-color: #0271da;
     }
   }
   

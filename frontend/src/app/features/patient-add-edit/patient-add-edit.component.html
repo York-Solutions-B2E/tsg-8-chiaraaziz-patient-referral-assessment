@@ -2,10 +2,13 @@
 
 <form class="form" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
     <div class="content-box">
-        <h2>Add a new patient referral</h2>
+        <h2>
+            {{ pageType }}
+            Patient Information
+        </h2>
         <div class="field">
-            <label class="label">Patient Name</label>
-            <input type="text"  class="input" formControlName="name" placeholder="full patient name"
+            <label class="label">Patient Name {{patientForm.get('name')}}</label>
+            <input type="text"  class="input" formControlName="name" placeholder="full patient name" 
                 [class.invalid]="patientForm.get('name')?.invalid && (patientForm.get('name')?.dirty || patientForm.get('name')?.touched)"
             />
             <span
@@ -23,7 +26,7 @@
         </div>
 
         <div class="field">
-            <label>Phone Numer</label>
+            <label>Phone Number</label>
             <input type="tel" formControlName="contactInfo" placeholder="999-999-9999"/>
             <span
                 *ngIf="patientForm.get('name')?.hasError('required') && (patientForm.get('name')?.dirty || patientForm.get('name')?.touched)"
@@ -58,19 +61,8 @@
         </div>
 
         <div>
-            <button type="submit">Submit Form</button>
-
+            <button type="submit">{{buttonText}}</button>
         </div>
-        
-        
-        
-        
-       
-    
-        
-    
-        
-    
     </div>
 
 </form>
