@@ -37,7 +37,7 @@ export class PatientAddEditComponent implements OnInit {
     patientForm:FormGroup = this.formBuilder.group({
     name: new FormControl('',[Validators.required]),
     dateOfBirth: new FormControl('',[Validators.required]),
-    // contactInfo: new FormControl(''),
+    contactInfo: new FormControl('',[Validators.required, Validators.pattern('[0-9]{3}-[0-9]{3}-[0-9]{4}')]),
     // referralReason : new FormControl(''),
     // referralStatus: new FormControl(''),
     })
@@ -74,7 +74,7 @@ export class PatientAddEditComponent implements OnInit {
           //sets the data from the server in the form
           this.patientForm.controls['name'].setValue(this.patient.name);
           this.patientForm.controls['dateOfBirth'].setValue(this.patient.dateOfBirth);
-          // this.patientForm.controls['contactInfo'].setValue(this.patient.contactInfo);
+          this.patientForm.controls['contactInfo'].setValue(this.patient.contactInfo);
           // this.patientForm.controls['referralReason'].setValue(this.patient.referralReason);
           // this.patientForm.controls['referralStatus'].setValue(this.patient.referralStatus);
           console.log(this.patientForm.get('name'))
@@ -99,18 +99,14 @@ export class PatientAddEditComponent implements OnInit {
       this.isFormSubmitted  =true;
       this.patient.name = this.patientForm.value.name;
       this.patient.dateOfBirth = this.patientForm.value.dateOfBirth;
-      
-      console.log('name is ok!!!', this.patient.name);
-      console.log('DOB is ok!!!', this.patient.dateOfBirth);
+      this.patient.contactInfo = this.patientForm.value.contactInfo;
+      debugger;
+      console.log('phone is ok!!!', this.patient.contactInfo);
       
     }
     
+   
     
-    
-
-    // this.patient.name = this.patientForm.value.name;
-    // this.patient.dateOfBirth = this.patientForm.value.dateOfBirth;
-    // this.patient.contactInfo = this.patientForm.value.contactInfo;
     // this.patient.referralReason;
     // this.patient.referralStatus;
     // this.patient.createdAt = new Date();
