@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { FormBuilder, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, Validators, ReactiveFormsModule, FormControlName, FormGroup } from '@angular/forms';
 import { PatientsService } from '../../services/patients.service';
 import { Patient } from '../../types';
 import { Router } from '@angular/router';
@@ -14,19 +14,10 @@ import { Router } from '@angular/router';
 })
 export class AddPatientFormComponent {
   @Input() buttonText: any;
+  @Input() patient: Patient = {} as Patient;
+ 
   selectedReason: FormControl = new FormControl('');
   selectedStatus: FormControl = new FormControl('');
-
-  patient: Patient= {
-    id: '',
-    name: '',
-    dateOfBirth: '',
-    contactInfo: '',
-    referralReason: '',
-    referralStatus: '',
-    createdAt: new Date(),
-    updatedAt: new Date()
-  };
 
   patientForm = this.formBuilder.group({
     name: ['', Validators.required],
@@ -34,23 +25,17 @@ export class AddPatientFormComponent {
     contactInfo: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
     referralReason: ['', Validators.required],
     referralStatus: ['', [Validators.required]],
-
   })
-  
 
-  constructor(private formBuilder: FormBuilder, private patientsService: PatientsService, private router:Router){}
+  constructor(
+    private formBuilder: FormBuilder,
+    private patientsService: PatientsService,
+    private router:Router){}
 
-  ngOnInit(): void {
-    
-
-    
-  }
   onDropDownChange(){
     this.patient.referralReason = this.selectedReason.value;
-    this.patient.referralStatus = this.selectedStatus.value;
-    
+    this.patient.referralStatus = this.selectedStatus.value;    
   }
-  
 
   onSubmit():void {
     this.patient.name = this.patientForm.value.name;
@@ -59,10 +44,6 @@ export class AddPatientFormComponent {
     this.patient.referralReason;
     this.patient.referralStatus;
     this.patientsService.addPatient(this.patient).subscribe(() => {this.router.navigateByUrl('/dashboard')});
-    console.log('form data', this.patient);
-    
+    console.log('form data', this.patient);    
   }
-
-  
-
 }

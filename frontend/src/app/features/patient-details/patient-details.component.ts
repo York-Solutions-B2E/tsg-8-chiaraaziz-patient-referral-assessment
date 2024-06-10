@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, ActivatedRoute } from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
@@ -7,12 +7,13 @@ import { PatientsService } from '../../services/patients.service';
 import { MatButton } from '@angular/material/button';
 import {MatDialog,} from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
+import { EditPatientComponent } from '../edit-patient/edit-patient.component';
 
 
 @Component({
   selector: 'app-patient-details',
   standalone: true,
-  imports: [RouterOutlet, NgFor, RouterLink, MatCardModule, MatButton, DialogComponent],
+  imports: [RouterOutlet, NgFor, RouterLink, MatCardModule, MatButton, DialogComponent, EditPatientComponent, NgIf],
   templateUrl: './patient-details.component.html',
   styleUrl: './patient-details.component.css',
   
@@ -20,8 +21,9 @@ import { DialogComponent } from './dialog/dialog.component';
 export class PatientDetailsComponent {
   patients!: Patient[];
 
-  patient!: Patient;
-  id!: string;
+  patient: Patient = {} as Patient;
+  id: string = '';
+  showEditPatient = false;
   
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(DialogComponent, {
@@ -55,6 +57,5 @@ export class PatientDetailsComponent {
     this.patientService.deletePatientById(id).subscribe(() => {
       this.patients = this.patients.filter(patient => patient.id !== id);
     })
-  } 
-
+  }
 }

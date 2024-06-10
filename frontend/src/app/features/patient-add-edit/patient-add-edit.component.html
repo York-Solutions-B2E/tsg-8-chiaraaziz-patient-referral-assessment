@@ -2,9 +2,9 @@
 
 <form class="form" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
     <div class="content-box">
-        <h2>Patient Information</h2>
+        <h2>Patient Information?</h2>
         <div class="field">
-            <label class="label">Patient Name</label>
+            <label class="label">Patient Name {{patientForm.get('name')}}</label>
             <input type="text"  class="input" formControlName="name" placeholder="full patient name" 
                 [class.invalid]="patientForm.get('name')?.invalid && (patientForm.get('name')?.dirty || patientForm.get('name')?.touched)"
             />
@@ -59,18 +59,7 @@
 
         <div>
             <button type="submit">{{buttonText}}</button>
-
         </div>
-        
-        
-        
-        
-       
-    
-        
-    
-        
-    
     </div>
 
 </form>
