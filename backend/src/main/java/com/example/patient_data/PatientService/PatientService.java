@@ -42,8 +42,12 @@ private  PatientRepository patientRepository;
     Optional<Patient> existingPatient = patientRepository.findById(id);
     if (existingPatient.isPresent()) {
         Patient patient = existingPatient.get();
+        patient.setName(updatedPatient.getName());
+        patient.setDateOfBirth(updatedPatient.getDateOfBirth());
+        patient.setContactInfo(updatedPatient.getContactInfo());
         patient.setReferralReason(updatedPatient.getReferralReason());
         patient.setReferralStatus(updatedPatient.getReferralStatus());
+        patient.setUpdatedAt(updatedPatient.getUpdatedAt());
         return patientRepository.save(patient);
     } else {
         throw new Exception("Patient not found");
