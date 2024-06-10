@@ -14,8 +14,10 @@ import { NgIf } from '@angular/common';
 })
 export class PatientAddEditComponent implements OnInit {
   @Input() buttonText: string = 'Save';
+
   selectedReason: FormControl = new FormControl('');
   selectedStatus: FormControl = new FormControl('');
+  
   patient:Patient = {} as Patient;
   id: string = '';
   patientForm:FormGroup = this.formBuilder.group({

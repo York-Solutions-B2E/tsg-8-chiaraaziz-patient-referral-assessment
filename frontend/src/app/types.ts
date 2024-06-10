@@ -1,6 +1,6 @@
 export interface Patient {
     id: string,
-    name: string | null |undefined,
+    name: string 
     dateOfBirth: string | null |undefined,
     contactInfo: string | null |undefined,
     referralReason: string | null |undefined,

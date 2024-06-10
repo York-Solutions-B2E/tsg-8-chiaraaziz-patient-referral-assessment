@@ -20,7 +20,7 @@ import { ActivatedRoute } from '@angular/router';
 export class DialogComponent {
   
 
-  patients!: Patient[];
+  patient:Patient = {} as Patient;
 
 
   constructor(public dialogRef: MatDialogRef<DialogComponent>, private patientService:PatientsService, private route: ActivatedRoute,){}
