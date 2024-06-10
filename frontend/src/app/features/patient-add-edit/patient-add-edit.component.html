@@ -13,10 +13,21 @@
                 <span *ngIf="patientForm.controls['name'].errors?.['required']">Name is required</span>
 
             </div>
-
         </div>
-<!-- 
-        <div class="select">
+
+
+       <div class="field">
+            <label>Date Of Birth</label>
+            <input type="date" formControlName="dateOfBirth" />
+            <div class="invalid" *ngIf="patientForm.controls['dateOfBirth'].invalid && (isFormSubmitted || patientForm.controls['dateOfBirth'].touched ||patientForm.controls['dateOfBirth'].dirty)">
+                <span *ngIf="patientForm.controls['dateOfBirth'].errors?.['required']">DOB is required</span>
+
+            </div>
+
+        </div> 
+        
+
+        <!-- <div class="select">
             <label>Select Referral Reason:</label>
             <select formControlName="referralReason">Choose Reason
                 <option selected disabled value="" >Select a Referral Reason</option>
@@ -36,14 +47,10 @@
                 <option value="Pending">Pending</option>
             </select>
 
-        </div> -->
+        </div>  -->
     
-        <!-- <div class="field">
-            <label>Date Of Birth</label>
-            <input type="date" formControlName="dateOfBirth" required="dateOfBirth"/>
-
-        </div>
-
+        
+<!-- 
         <div class="field">
             <label>Phone Number</label>
             <input type="tel" formControlName="contactInfo" placeholder="999-999-9999"/>
@@ -52,8 +59,8 @@
                 class="error">
                     This field is required.
             </span>
-        </div>
-
+        </div> -->
+<!-- 
         <div class="select">
             <label>Select Referral Reason:</label>
             <select  [formControl]="referralReason" formControlName="referralReason" (change)="onDropDownChange()">
@@ -80,9 +87,9 @@
                 <option value="Declined" >Declined</option>
                 <option value="Pending">Pending</option>
             </select>
-           
+            -->
 
-        </div> -->
+        <!-- </div>  -->
 
         <div>
             <button type="submit" >{{buttonText}}</button>
