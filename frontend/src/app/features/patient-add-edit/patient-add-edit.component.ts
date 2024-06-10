@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormControl, Validators, ReactiveFormsModule, FormControlName, FormGroup } from '@angular/forms';
 import { Patient } from '../../types';
 import { NgIf } from '@angular/common';
-import { error } from 'console';
 
 @Component({
   selector: 'app-patient-add-edit',
@@ -26,7 +25,8 @@ export class PatientAddEditComponent implements OnInit {
     referralReason: ['', Validators.required],
     referralStatus: ['', [Validators.required]],
   })
-
+  
+//checking to see if there is an id - there should always be an id for edit
   get isEdit(): boolean {
     return this.id?.length > 0 || false;
   }
