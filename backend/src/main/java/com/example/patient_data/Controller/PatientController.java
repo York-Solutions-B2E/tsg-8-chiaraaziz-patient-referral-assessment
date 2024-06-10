@@ -32,9 +32,9 @@ public class PatientController {
     @RequestMapping("/dashboard")
     public List<Patient> getAllPatients()
     {
-        return patientService.getAllPatients();
-        
+        return patientService.getAllPatients();        
     }
+    
     //create a new patient referral
     @PostMapping("/patient")
     public ResponseEntity<Patient> savePatient(@RequestBody Patient patient) {
@@ -43,28 +43,23 @@ public class PatientController {
     }
 
     //get patients by id
-    @GetMapping("/patients/{id}")
+    @GetMapping("/patient/{id}")
     public ResponseEntity<Patient> getPatientById(@PathVariable Integer id) {
         Optional<Patient> patient = patientService.getPatientById(id);
         return patient.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     //edit or put mapping
-    @PutMapping("/patients/{id}")
+    @PutMapping("/patient/{id}")
     public ResponseEntity<Patient> updatePatient(@PathVariable Integer id, @RequestBody Patient patient) throws Exception {
         Patient updatedPatient = patientService.updatedPatient(id, patient);
         return ResponseEntity.ok(updatedPatient);
     }
 
     //delete a patient
-    @DeleteMapping("/patients/{id}")
+    @DeleteMapping("/patient/{id}")
     public ResponseEntity<String> deletePatient(@PathVariable Integer id) {
         patientService.deletePatient(id);
         return ResponseEntity.ok("Patient has been deleted!");
-    }
-
-
-
-
-    
+    }    
 }

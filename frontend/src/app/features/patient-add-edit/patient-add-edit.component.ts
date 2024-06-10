@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormControl, Validators, ReactiveFormsModule, FormControlName, FormGroup } from '@angular/forms';
 import { Patient } from '../../types';
 import { NgIf } from '@angular/common';
+import { error } from 'console';
 
 @Component({
   selector: 'app-patient-add-edit',
@@ -29,7 +30,7 @@ export class PatientAddEditComponent implements OnInit {
   get isEdit(): boolean {
     return this.id?.length > 0 || false;
   }
-  
+
   get pageType(): string {
     return this.isEdit ? 'Edit' : 'Add';
   }
@@ -50,7 +51,7 @@ export class PatientAddEditComponent implements OnInit {
           console.log('data from edit', this.patient);
 
           this.patientForm.controls['name'].setValue(this.patient.name);
-        })
+        });
       } else {
         this.patient = {} as Patient;
       }

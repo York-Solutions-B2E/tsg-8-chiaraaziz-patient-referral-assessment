@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, catchError } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 import { Patient } from '../types';
 
 
@@ -15,25 +15,34 @@ const httpOptions = {
 })
 export class PatientsService {
 
+  baseUrl: string = 'http://localhost:8080/patient';
+
   constructor(private http: HttpClient) { }
 
   getPatientById(id:string): Observable<Patient>{
-    return this.http.get<Patient>(`http://localhost:8080/patients/${id}`);
+    return this.http.get<Patient>(`${this.baseUrl}/${id}`)
+      .pipe(catchError(
+        (error) => {
+          // pop my toast here
+          alert('err')
+          return of({} as Patient)
+        }
+      ))
   }
+
   deletePatientById(id:string): Observable<Patient> {
-    return this.http.delete<Patient>(`http://localhost:8080/patients/${id}`)
+    return this.http.delete<Patient>(`${this.baseUrl}/${id}`)
   }
 
   //adds a patient 
   addPatient(patient: Patient): Observable<Patient>{
-    return this.http.post<Patient>('http://localhost:8080/patient', patient, httpOptions)
+    return this.http.post<Patient>(this.baseUrl, patient, httpOptions)
   }
   // handelError(arg0: string, patient: Patient): (err: any, caught: Observable<Patient>) => import("rxjs").ObservableInput<any> {
   //   throw new Error('Could not add Patient at this time');
   // }
 
-  updatePatient(id:string, patient:Patient): Observable<Patient> {
-    
-    return this.http.put<Patient>(`http://localhost:8080/patients/${id}`, patient, httpOptions);
+  updatePatient(id:string, patient:Patient): Observable<Patient> {    
+    return this.http.put<Patient>(`${this.baseUrl}/${id}`, patient, httpOptions);
   }
 }
