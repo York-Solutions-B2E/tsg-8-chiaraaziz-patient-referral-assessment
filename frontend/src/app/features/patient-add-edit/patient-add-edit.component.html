@@ -7,66 +7,107 @@
             Patient Information
         </h2>
         <div class="field">
-            <label class="label">Patient Name {{patientForm.get('name')}}</label>
-            <input type="text"  class="input" formControlName="name" placeholder="full patient name" 
-                [class.invalid]="patientForm.get('name')?.invalid && (patientForm.get('name')?.dirty || patientForm.get('name')?.touched)"
-            />
-            <span
-                *ngIf="patientForm.get('name')?.hasError('required') && (patientForm.get('name')?.dirty || patientForm.get('name')?.touched)"
-                class="error">
-                    This field is required.
-            </span>
+            <label class="label">Patient Name {{patientForm.get('name')?.value}}</label>
+            <input type="text"  class="input" formControlName="name" placeholder="full patient name" />
+            <div class="invalid" *ngIf="patientForm.controls['name'].invalid && (isFormSubmitted || patientForm.controls['name'].touched ||patientForm.controls['name'].dirty)">
+                <span *ngIf="patientForm.controls['name'].errors?.['required']">Name is required</span>
 
+            </div>
         </div>
-    
-        <div class="field">
+
+
+       <div class="field">
             <label>Date Of Birth</label>
-            <input type="date" formControlName="dateOfBirth" required="dateOfBirth"/>
+            <input type="date" formControlName="dateOfBirth" />
+            <div class="invalid" *ngIf="patientForm.controls['dateOfBirth'].invalid && (isFormSubmitted || patientForm.controls['dateOfBirth'].touched ||patientForm.controls['dateOfBirth'].dirty)">
+                <span *ngIf="patientForm.controls['dateOfBirth'].errors?.['required']">DOB is required</span>
 
-        </div>
+            </div>
+
+        </div> 
 
         <div class="field">
             <label>Phone Number</label>
             <input type="tel" formControlName="contactInfo" placeholder="999-999-9999"/>
-            <span
-                *ngIf="patientForm.get('name')?.hasError('required') && (patientForm.get('name')?.dirty || patientForm.get('name')?.touched)"
-                class="error">
-                    This field is required.
-            </span>
+            <div class="invalid" *ngIf="patientForm.controls['contactInfo'].invalid && (isFormSubmitted || patientForm.controls['contactInfo'].touched ||patientForm.controls['contactInfo'].dirty)">
+                <span *ngIf="patientForm.controls['contactInfo'].errors?.['required']">Phone is required</span>
+
+            </div>
+            
+        </div> 
+        
+
+        <div class="select">
+            <label>Select Referral Reason:</label>
+            <select formControlName="referralReason">Choose Reason
+                <option selected disabled value="" >Select a Referral Reason</option>
+                <option value="Certain Death" >Certain Death</option>
+                <option value="Second Opinion" >Second Opinion</option>
+                <option value="Other" >Other</option>
+            </select>
+            <div class="invalid" *ngIf="patientForm.controls['referralReason'].invalid && (isFormSubmitted || patientForm.controls['referralReason'].touched ||patientForm.controls['referralReason'].dirty)">
+                <span *ngIf="patientForm.controls['referralReason'].errors?.['required']">Reason required</span>
+
+            </div>
+
         </div>
 
         <div class="select">
-            <label>Referral Reason</label>
-            <select  [formControl]="selectedReason" formControlName="selectedReason" (change)="onDropDownChange()">
+            <label>Select Referral Status:</label>
+            <select formControlName="referralStatus">Choose Reason
+                <option selected disabled value="" >Select a Referral Status</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Declined" >Declined</option>
+                <option value="Pending">Pending</option>
+            </select>
+            <div class="invalid" *ngIf="patientForm.controls['referralStatus'].invalid && (isFormSubmitted || patientForm.controls['referralStatus'].touched ||patientForm.controls['referralStatus'].dirty)">
+                <span *ngIf="patientForm.controls['referralStatus'].errors?.['required']">Status required</span>
+
+            </div>
+
+        </div>  
+    
+        
+<!-- 
+        
+ 
+        <div class="select">
+            <label>Select Referral Reason:</label>
+            <select  [formControl]="referralReason" formControlName="referralReason" (change)="onDropDownChange()">
                 <label>Reason for Referral</label>
                 <option value="" >Select a Referral Reason</option>
                 <option value="Certain Death" >Certain Death</option>
                 <option value="Second Opinion" >Second Opinion</option>
                 <option value="Other" >Other</option>
             </select>
-
+            <span
+                *ngIf="patientForm.get('referralReason')?.hasError('required') && (patientForm.get('referralReason')?.dirty || patientForm.get('referralReason')?.touched)"
+                class="error">
+                This needs an entry
+            </span>
+          
         </div>
 
         <div class="select">
-            <label>Referral Status</label>
-            <select [formControl]="selectedStatus" formControlName="selectedStatus" (change)="onDropDownChange()">
+            <label>Select Referral Status:</label>
+            <select [formControl]="referralStatus" formControlName="referralStatus" (change)="onDropDownChange()">
                 <label>Reason Status</label>
                 <option value="" >Referral Status</option>
                 <option value="Accepted">Accepted</option>
                 <option value="Declined" >Declined</option>
                 <option value="Pending">Pending</option>
             </select>
-           
+            -->
 
-        </div>
+        <!-- </div>  -->
 
         <div>
-            <button type="submit" [disabled]="!patientForm.valid">{{buttonText}}</button>
+            <button type="submit" >{{buttonText}}</button>
         </div>
     </div>
 
 </form>
 <p>{{patientForm.status}}</p>
-<p>{{patientForm.getRawValue()}}</p>
+
 
 
