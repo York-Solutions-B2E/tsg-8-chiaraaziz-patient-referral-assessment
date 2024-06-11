@@ -9,19 +9,10 @@ export class ResponseInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         console.log('Request URL' + request.url);
         return next.handle(request).pipe(
-            tap<HttpEvent<unknown>>(
-                () => {
-                    /** */
-                },
-                (error:HttpErrorResponse) => {
-                    if (error.status == 404){
-                        alert(`Error: ${error.status} - Not found`)
-                    }
-                    if (error.status == 500) {
-                        alert(`Error ${error.status} internal service error`)
-                    }
-                }
-            )
+            tap({
+                next:() => {},//sucessfull ---so do nothing
+                error: (error: HttpErrorResponse) => {alert(`Error:${error.message}`)}
+            })
         )
     }
 }
