@@ -3,19 +3,26 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.patient_data.PatientRepository.NoteRepository;
 import com.example.patient_data.PatientRepository.PatientRepository;
 import com.example.patient_data.entity.Patient;
 
 @Service
 public class PatientService {
 
-//    private static final Error Error = null;
+
 private  PatientRepository patientRepository;
 
+    private NoteRepository noteRepository;
+
    @Autowired
-   public PatientService(PatientRepository patientRepository) {
+   public PatientService(PatientRepository patientRepository, NoteRepository noteRepository) {
        this.patientRepository = patientRepository;
+       this.noteRepository = noteRepository;
    }
+
+   
 
    //save a patient
    public Patient savePatient(Patient patient) {
