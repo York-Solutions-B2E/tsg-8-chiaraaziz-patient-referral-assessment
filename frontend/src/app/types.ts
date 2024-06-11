@@ -13,7 +13,7 @@ export interface Patient {
 
 export interface Note {
     id : string,
-    noteText: string,
+    content: string,
     createdDate: Date
 
 }

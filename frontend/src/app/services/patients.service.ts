@@ -47,7 +47,6 @@ export class PatientsService {
   // }
 
   updatePatient(id:string, patient:Patient): Observable<Patient> {    
-    debugger;
     return this.http.put<Patient>(`${this.baseUrl}/${id}`, patient, httpOptions);
   }
 }

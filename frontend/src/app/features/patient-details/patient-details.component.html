@@ -30,4 +30,14 @@
       <a routerLink="/patient/{{patient.id}}/edit">
         <button mat-raised-button>Edit Patient</button>
       </a>
+      
+      <h4>Patient Notes:</h4>
+        <ul *ngFor="let note of patient.notes">
+          <li>
+            {{note.createdDate}} -
+            {{note.content}}
+          </li>          
+        </ul>
+
+      
 </div>

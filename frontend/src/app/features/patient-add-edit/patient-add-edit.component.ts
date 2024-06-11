@@ -84,58 +84,20 @@ export class PatientAddEditComponent implements OnInit {
   onSubmit():void {
 
     const isFormValid = this.patientForm.valid;
-    if (isFormValid && !this.isEdit) {
-      this.isFormSubmitted  =true;
-      this.patient.name = this.patientForm.value.name;
-      this.patient.dateOfBirth = this.patientForm.value.dateOfBirth;
-      this.patient.contactInfo = this.patientForm.value.contactInfo;
-      this.patient.referralReason = this.patientForm.value.referralReason;
-      this.patient.referralStatus = this.patientForm.value.referralStatus
-      debugger;
-      this.patient.noteText = this.patientForm.value.noteText;
-    
-      this.patientService.addPatient(this.patient).subscribe(() => {this.router.navigateByUrl('/dashboard')});
-      
-    } else if (isFormValid && this.isEdit){
-      this.isFormSubmitted  =true;
+    this.isFormSubmitted  = true;
+    if (isFormValid) {
       this.patient = Object.assign(this.patient, this.patientForm.value);
-      this.patientService.updatePatient(this.patient.id, this.patient).subscribe(() => {this.router.navigateByUrl('/dashboard')});
-      console.log('edit data', this.patient);
-      
+      if (!this.isEdit) {
+        this.patientService.addPatient(this.patient).subscribe((p) => {
+          this.router.navigate(['patient', p.id])
+        });      
+      } else {
+        this.patientService.updatePatient(this.patient.id, this.patient).subscribe(() => {
+          this.router.navigate(['patient', this.patient.id])
+        });
+      }
     } else {
       this.isFormSubmitted = false;
     }
-
-    
-    // if (this.isEdit) {
-    //   this.patient.updatedAt = new Date();
-    //   this.patientService.updatePatient(this.patient.id, this.patient).subscribe(() => {this.router.navigateByUrl('/dashboard')});
-    //   console.log('edit data', this.patient);
-      
-  
-    // } else {
-    //   this.patientService.addPatient(this.patient).subscribe(() => {this.router.navigateByUrl('/dashboard')});
-       
-    // }
-    // if (this.patientForm.valid) {
-    //   console.log('Form is ok');
-      
-    // } else {
-    //   Object.keys(this.patientForm).forEach(field => {
-    //     const control = this.patientForm.get(field);
-    //     control?.markAllAsTouched({});
-    //   })
-    // }
-
-    // for (let controller in this.patientForm.controls) {
-    //   this.patientForm.get(controller)?.markAsTouched();
-    // }
-    // if (this.patientForm.valid) {
-    //   console.log('form OK');
-      
-    // } else {
-    //   console.log("Form not ok");
-      
-    // }
   }
 }

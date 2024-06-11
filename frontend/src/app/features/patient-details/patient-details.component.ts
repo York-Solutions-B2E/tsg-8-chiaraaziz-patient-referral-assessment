@@ -1,8 +1,8 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink, ActivatedRoute } from '@angular/router';
+import { RouterOutlet, RouterLink, ActivatedRoute, Router } from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
-import { Patient } from '../../types';
+import { Note, Patient } from '../../types';
 import { PatientsService } from '../../services/patients.service';
 import { MatButton } from '@angular/material/button';
 import {MatDialog,} from '@angular/material/dialog';
@@ -19,8 +19,7 @@ import { HeaderComponent } from '../../shared/header/header.component';
   
 })
 export class PatientDetailsComponent {
-  patients!: Patient[];
-
+  
   patient: Patient = {} as Patient;
   id: string = '';
   showEditPatient = false;
@@ -34,11 +33,10 @@ export class PatientDetailsComponent {
     });
   }
 
-  
-
   constructor(
     private patientService: PatientsService,
     private route: ActivatedRoute,
+    private router: Router,
     public dialog: MatDialog
   ){}
 
@@ -55,7 +53,7 @@ export class PatientDetailsComponent {
   }
   onDeleteClicked(id: string): void{
     this.patientService.deletePatientById(id).subscribe(() => {
-      this.patients = this.patients.filter(patient => patient.id !== id);
+      this.router.navigate(['dashboard']);
     })
   }
 }

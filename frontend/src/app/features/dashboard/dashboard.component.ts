@@ -26,7 +26,6 @@ export class DashboardComponent {
 
   constructor(
     private _patientService: PatientsService,
-    private _router: Router
   ){}
 
   public ngOnInit(): void{
