@@ -1,13 +1,8 @@
 package com.example.patient_data.PatientService;
-
-
 import java.util.List;
 import java.util.Optional;
-
-//import com.example.patient_data.PatientRepository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.patient_data.PatientRepository.PatientRepository;
 import com.example.patient_data.entity.Patient;
 
