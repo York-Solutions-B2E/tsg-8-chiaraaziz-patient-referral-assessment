@@ -30,6 +30,7 @@ private  PatientRepository patientRepository;
         patient.setCreatedAt(java.time.LocalDate.now());
         patient.setUpdatedAt(java.time.LocalDate.now());
         patient = patientRepository.save(patient);
+        
 
         if (patient.getNoteText() != null && patient.getNoteText().trim().length() > 0) {
             Note note = new Note(patient, patient.getNoteText(), java.time.LocalDate.now());
@@ -69,7 +70,7 @@ private  PatientRepository patientRepository;
         patient.setReferralStatus(updatedPatient.getReferralStatus());
         patient.setUpdatedAt(java.time.LocalDate.now());
 
-        if (updatedPatient.getNoteText().trim().length() > 0) {
+        if (updatedPatient.getNoteText() != null && updatedPatient.getNoteText().trim().length() > 0) {
             Note note = new Note(patient, updatedPatient.getNoteText(), java.time.LocalDate.now());
             noteRepository.save(note);
         }

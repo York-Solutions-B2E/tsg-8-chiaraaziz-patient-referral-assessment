@@ -1,5 +1,8 @@
 package com.example.patient_data.entity;
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,15 +21,18 @@ public class Note {
 
     @ManyToOne
     @JoinColumn(name = "patient_id")
+    @JsonIgnore()
     private Patient patient;
-    private String noteText;
+    private String content;
     private LocalDate createdDate;
 
-    
+    public Note() {
+        this.createdDate = java.time.LocalDate.now();
+    }
 
-    public Note(Patient patient, String noteText, LocalDate createdDate) {
+    public Note(Patient patient, String content, LocalDate createdDate) {
         this.patient = patient;
-        this.noteText = noteText;
+        this.content = content;
         this.createdDate = createdDate;
     }
     //getter and setters
@@ -43,10 +49,10 @@ public class Note {
         this.patient = patient;
     }
     public String getContent() {
-        return noteText;
+        return content;
     }
-    public void setContent(String noteText) {
-        this.noteText = noteText;
+    public void setContent(String content) {
+        this.content = content;
     }
     public LocalDate getCreatedDate() {
         return createdDate;

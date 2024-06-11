@@ -30,7 +30,7 @@ public class PatientController {
     }
     
     //gets all patients in database
-    @RequestMapping("/dashboard")
+    @RequestMapping("/patient/all")
     public List<Patient> getAllPatients()
     {
         return patientService.getAllPatients();        

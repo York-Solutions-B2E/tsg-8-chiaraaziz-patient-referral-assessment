@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DashboardService } from '../../services/dashboard.service';
 import { Patient } from '../../types';
 import { NgFor, NgIf } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
@@ -26,14 +25,13 @@ export class DashboardComponent {
   id!: string;
 
   constructor(
-    private _dashboardService: DashboardService,
     private _patientService: PatientsService,
     private _router: Router
   ){}
 
   public ngOnInit(): void{
    
-  this._dashboardService.getPatients().subscribe(patients => {
+  this._patientService.getPatients().subscribe(patients => {
     this.patients = patients;
    });
   }

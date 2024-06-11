@@ -29,7 +29,7 @@ public class Patient {
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true) //updates all notes when changes happen on patients
     private List<Note> notes = new ArrayList<>();
     @Transient
-    private String NoteText;
+    private String noteText;
 
     public Patient() {
     }
@@ -116,6 +116,10 @@ public class Patient {
     }
 
     public String getNoteText() {
-        return this.NoteText;
+        return this.noteText;
+    }
+
+    public void setNoteText(String noteText) {
+        this.noteText = noteText;
     }
 }

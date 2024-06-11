@@ -91,6 +91,7 @@ export class PatientAddEditComponent implements OnInit {
       this.patient.contactInfo = this.patientForm.value.contactInfo;
       this.patient.referralReason = this.patientForm.value.referralReason;
       this.patient.referralStatus = this.patientForm.value.referralStatus
+      debugger;
       this.patient.noteText = this.patientForm.value.noteText;
     
       this.patientService.addPatient(this.patient).subscribe(() => {this.router.navigateByUrl('/dashboard')});

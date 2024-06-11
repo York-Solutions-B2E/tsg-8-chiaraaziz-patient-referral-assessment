@@ -19,6 +19,10 @@ export class PatientsService {
 
   constructor(private http: HttpClient) { }
 
+  getPatients(): Observable<Patient[]> {
+    return this.http.get<Patient[]>(`${this.baseUrl}/all`)
+  }
+
   getPatientById(id:string): Observable<Patient>{
     return this.http.get<Patient>(`${this.baseUrl}/${id}`)
       .pipe(catchError(
