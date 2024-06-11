@@ -30,7 +30,7 @@ export class PatientAddEditComponent implements OnInit {
     contactInfo: new FormControl('',[Validators.required, Validators.pattern('[0-9]{3}-[0-9]{3}-[0-9]{4}')]),
     referralReason : new FormControl('',[Validators.required]),
     referralStatus: new FormControl('', [Validators.required]),
-    note: new FormControl('')
+    noteText: new FormControl('')
     })
 
  
@@ -91,7 +91,7 @@ export class PatientAddEditComponent implements OnInit {
       this.patient.contactInfo = this.patientForm.value.contactInfo;
       this.patient.referralReason = this.patientForm.value.referralReason;
       this.patient.referralStatus = this.patientForm.value.referralStatus
-      this.patient.noteText = this.patientForm.value.note;
+      this.patient.noteText = this.patientForm.value.noteText;
     
       this.patientService.addPatient(this.patient).subscribe(() => {this.router.navigateByUrl('/dashboard')});
       

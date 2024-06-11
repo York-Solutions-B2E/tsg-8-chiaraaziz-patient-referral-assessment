@@ -19,14 +19,14 @@ public class Note {
     @ManyToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;
-    private String content;
+    private String noteText;
     private LocalDate createdDate;
 
     
 
-    public Note(Patient patient, String content, LocalDate createdDate) {
+    public Note(Patient patient, String noteText, LocalDate createdDate) {
         this.patient = patient;
-        this.content = content;
+        this.noteText = noteText;
         this.createdDate = createdDate;
     }
     //getter and setters
@@ -43,10 +43,10 @@ public class Note {
         this.patient = patient;
     }
     public String getContent() {
-        return content;
+        return noteText;
     }
-    public void setContent(String content) {
-        this.content = content;
+    public void setContent(String noteText) {
+        this.noteText = noteText;
     }
     public LocalDate getCreatedDate() {
         return createdDate;

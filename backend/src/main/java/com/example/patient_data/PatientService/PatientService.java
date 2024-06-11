@@ -31,7 +31,7 @@ private  PatientRepository patientRepository;
         patient.setUpdatedAt(java.time.LocalDate.now());
         patient = patientRepository.save(patient);
 
-        if (patient.getNoteText().trim().length() > 0) {
+        if (patient.getNoteText() != null && patient.getNoteText().trim().length() > 0) {
             Note note = new Note(patient, patient.getNoteText(), java.time.LocalDate.now());
             note = noteRepository.save(note);
             patient.addNote(note);
