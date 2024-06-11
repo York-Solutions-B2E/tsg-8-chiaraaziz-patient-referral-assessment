@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name= "patient")
@@ -27,7 +30,19 @@ public class Patient {
     private LocalDate updatedAt;
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true) //updates all notes when changes happen on patients
     private List<Note> notes = new ArrayList<>();
-    
+    @Transient
+    private String NoteText;
+
+    public Patient() {
+    }
+
+    public void addNote(Note note) {
+        notes.add(note);
+    }
+
+    public void removeNote(Note note) {
+        notes.remove(note);
+    }
 
     public int getId() {
         return id;
@@ -100,5 +115,9 @@ public class Patient {
 
     public void setNotes(List<Note> notes) {
         this.notes = notes;
+    }
+
+    public String getNoteText() {
+        return this.NoteText;
     }
 }
