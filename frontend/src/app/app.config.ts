@@ -3,10 +3,11 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {OktaAuthModule} from '@okta/okta-angular';
 import {OktaAuth} from '@okta/okta-auth-js';
+import { ResponseInterceptor } from './utilities/logging.interceptor';
 
 const oktaAuth = new OktaAuth({
   issuer: 'https://dev-00236918.okta.com/oauth2/default',
@@ -22,12 +23,12 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes), 
     provideClientHydration(),
-    provideHttpClient(), 
     provideAnimationsAsync(),
     importProvidersFrom(OktaAuthModule.forRoot({ oktaAuth })),
+    provideHttpClient(
+      withInterceptorsFromDi()
+    ),
     
-    
-    
-    
+    {provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }
   ]
 };
