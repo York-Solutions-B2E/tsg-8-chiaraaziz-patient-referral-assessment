@@ -6,6 +6,14 @@ export interface Patient {
     referralReason: string,
     referralStatus: string,
     createdAt: Date,
-    updatedAt: Date
+    updatedAt: Date,
+    noteText: string,
+    notes: Note[]
+}
+
+export interface Note {
+    id : string,
+    noteText: string,
+    createdDate: Date
 
 }

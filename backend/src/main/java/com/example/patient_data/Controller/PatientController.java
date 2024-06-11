@@ -28,8 +28,9 @@ public class PatientController {
     public PatientController(PatientService patientService) {
         this.patientService = patientService;
     }
+    
     //gets all patients in database
-    @RequestMapping("/dashboard")
+    @RequestMapping("/patient/all")
     public List<Patient> getAllPatients()
     {
         return patientService.getAllPatients();        

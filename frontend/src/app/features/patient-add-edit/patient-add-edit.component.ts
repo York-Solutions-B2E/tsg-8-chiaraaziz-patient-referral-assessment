@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PatientsService } from '../../services/patients.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormControl, Validators, ReactiveFormsModule, FormControlName, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { Patient } from '../../types';
 import { NgIf } from '@angular/common';
 import { HeaderComponent } from '../../shared/header/header.component';
@@ -30,6 +30,7 @@ export class PatientAddEditComponent implements OnInit {
     contactInfo: new FormControl('',[Validators.required, Validators.pattern('[0-9]{3}-[0-9]{3}-[0-9]{4}')]),
     referralReason : new FormControl('',[Validators.required]),
     referralStatus: new FormControl('', [Validators.required]),
+    noteText: new FormControl('')
     })
 
  
@@ -65,6 +66,7 @@ export class PatientAddEditComponent implements OnInit {
           this.patientForm.controls['referralReason'].setValue(this.patient.referralReason);
           this.patientForm.controls['referralStatus'].setValue(this.patient.referralStatus);
           
+          
 
         });
         //add patient so you need a new patient object
@@ -88,17 +90,16 @@ export class PatientAddEditComponent implements OnInit {
       this.patient.dateOfBirth = this.patientForm.value.dateOfBirth;
       this.patient.contactInfo = this.patientForm.value.contactInfo;
       this.patient.referralReason = this.patientForm.value.referralReason;
-      this.patient.referralStatus = this.patientForm.value.referralStatus;
-      this.patient.createdAt = new Date();
-      this.patient.updatedAt = new Date();
+      this.patient.referralStatus = this.patientForm.value.referralStatus
+      debugger;
+      this.patient.noteText = this.patientForm.value.noteText;
+    
       this.patientService.addPatient(this.patient).subscribe(() => {this.router.navigateByUrl('/dashboard')});
       
     } else if (isFormValid && this.isEdit){
       this.isFormSubmitted  =true;
-      this.patient.updatedAt = new Date();
       this.patient = Object.assign(this.patient, this.patientForm.value);
       this.patientService.updatePatient(this.patient.id, this.patient).subscribe(() => {this.router.navigateByUrl('/dashboard')});
-      debugger;
       console.log('edit data', this.patient);
       
     } else {
