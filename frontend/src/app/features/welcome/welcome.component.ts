@@ -3,11 +3,12 @@ import { Observable, filter, map } from 'rxjs';
 import { Router } from '@angular/router';
 import { OktaAuthStateService, OKTA_AUTH } from '@okta/okta-angular';
 import { AuthState, OktaAuth } from '@okta/okta-auth-js';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-welcome',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.css'
 })

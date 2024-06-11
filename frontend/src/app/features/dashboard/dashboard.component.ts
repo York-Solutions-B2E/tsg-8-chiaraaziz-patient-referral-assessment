@@ -20,7 +20,7 @@ import { Observable, filter, map } from 'rxjs';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [NgFor, RouterLink, RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule, FormsModule, MatChipsModule, NgIf, CommonModule],
+  imports: [NgFor, RouterLink, RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule, FormsModule, MatChipsModule, NgIf],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
