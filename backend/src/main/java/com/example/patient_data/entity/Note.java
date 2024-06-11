@@ -15,22 +15,32 @@ public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @ManyToOne
-    @JoinColumn(name = "patientId")
-    private int patientId;
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
     private String content;
     private LocalDate createdDate;
+
+    
+
+    public Note(Patient patient, String content, LocalDate createdDate) {
+        this.patient = patient;
+        this.content = content;
+        this.createdDate = createdDate;
+    }
+    //getter and setters
     public int getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
-    public int getPatientId() {
-        return patientId;
+    public Patient getPatient() {
+        return patient;
     }
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
     public String getContent() {
         return content;
@@ -44,6 +54,9 @@ public class Note {
     public void setCreatedDate(LocalDate createdDate) {
         this.createdDate = createdDate;
     }
+
+
+  
 
     
     

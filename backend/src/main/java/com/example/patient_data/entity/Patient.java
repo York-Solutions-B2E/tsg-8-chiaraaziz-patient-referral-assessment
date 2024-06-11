@@ -1,11 +1,15 @@
 package com.example.patient_data.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,6 +25,9 @@ public class Patient {
     private String referralStatus;
     private LocalDate createdAt;
     private LocalDate updatedAt;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true) //updates all notes when changes happen on patients
+    private List<Note> notes = new ArrayList<>();
+    
 
     public int getId() {
         return id;
@@ -85,5 +92,13 @@ public class Patient {
 
     public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
     }
 }
