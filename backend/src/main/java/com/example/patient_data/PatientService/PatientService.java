@@ -27,7 +27,8 @@ private  PatientRepository patientRepository;
 
    //save a patient
    public Patient savePatient(Patient patient) {
-
+        patient.setCreatedAt(java.time.LocalDate.now());
+        patient.setUpdatedAt(java.time.LocalDate.now());
         patient = patientRepository.save(patient);
 
         if (patient.getNoteText().trim().length() > 0) {

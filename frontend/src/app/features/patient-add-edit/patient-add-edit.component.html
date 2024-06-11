@@ -65,41 +65,14 @@
 
             </div>
 
-        </div>  
-    
-        
-<!-- 
-        
- 
-        <div class="select">
-            <label>Select Referral Reason:</label>
-            <select  [formControl]="referralReason" formControlName="referralReason" (change)="onDropDownChange()">
-                <label>Reason for Referral</label>
-                <option value="" >Select a Referral Reason</option>
-                <option value="Certain Death" >Certain Death</option>
-                <option value="Second Opinion" >Second Opinion</option>
-                <option value="Other" >Other</option>
-            </select>
-            <span
-                *ngIf="patientForm.get('referralReason')?.hasError('required') && (patientForm.get('referralReason')?.dirty || patientForm.get('referralReason')?.touched)"
-                class="error">
-                This needs an entry
-            </span>
-          
+
         </div>
-
-        <div class="select">
-            <label>Select Referral Status:</label>
-            <select [formControl]="referralStatus" formControlName="referralStatus" (change)="onDropDownChange()">
-                <label>Reason Status</label>
-                <option value="" >Referral Status</option>
-                <option value="Accepted">Accepted</option>
-                <option value="Declined" >Declined</option>
-                <option value="Pending">Pending</option>
-            </select>
-            -->
-
-        <!-- </div>  -->
+        
+        <div class="field">
+            <label class="label">Patient Notes {{patientForm.get('name')?.value}}</label>
+            <textarea type="text" formControlName="note" placeholder="Add note here"></textarea>
+        
+        </div>
 
         <div>
             <button type="submit" >{{buttonText}}</button>
