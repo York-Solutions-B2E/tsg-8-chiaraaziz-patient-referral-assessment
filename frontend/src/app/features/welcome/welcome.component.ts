@@ -18,6 +18,7 @@ export class WelcomeComponent {
   public name$!: Observable<string>;
 
   constructor(
+    private _router: Router,
     private _oktaStateService: OktaAuthStateService,
     @Inject(OKTA_AUTH) private _oktaAuth: OktaAuth
   ){}

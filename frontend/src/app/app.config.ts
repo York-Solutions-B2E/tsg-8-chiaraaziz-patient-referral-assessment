@@ -9,9 +9,9 @@ import {OktaAuthModule} from '@okta/okta-angular';
 import {OktaAuth} from '@okta/okta-auth-js';
 
 const oktaAuth = new OktaAuth({
-  issuer: 'https://${dev-00236918.okta.com}/oauth2/default',
-  clientId: '${0oahn69ttlScdqdlr5d7}',
-  redirectUri: window.location.origin + '/dashboard/callback'
+  issuer: 'https://dev-00236918.okta.com/oauth2/default',
+  clientId: '0oahn69ttlScdqdlr5d7',
+  redirectUri: window.location.origin + '/login/callback'
 });
 
 

@@ -12,12 +12,12 @@ export const routes: Routes = [
     // {path: 'protected',
     //     loadChildren: () => import('dashboard').then(m =>m.Protected)
     // },
-    {path: '', component: WelcomeComponent, pathMatch: 'full'},
-    {path: 'login/callback', component: OktaCallbackComponent, pathMatch:'full' },
-    {path: 'dashboard', component: DashboardComponent},
+    {path: 'login', component: WelcomeComponent, pathMatch: 'full'},
+    {path: 'login/callback', component: DashboardComponent, pathMatch: 'full'},
+    {path: 'dashboard', component: DashboardComponent, pathMatch: 'full'},
     {path: 'patient/:id/edit', component:PatientAddEditComponent, pathMatch: 'full'},
     {path: 'patient/:id', component:PatientDetailsComponent, pathMatch: 'full'},
     {path: 'patient', component: PatientAddEditComponent, pathMatch: 'full'},
-    
-    {path: 'profile', component: ProfileComponent},
+    {path: 'profile', component: ProfileComponent, pathMatch: 'full'},
+    {path: '', redirectTo:'/login', pathMatch: 'full'},
 ]
