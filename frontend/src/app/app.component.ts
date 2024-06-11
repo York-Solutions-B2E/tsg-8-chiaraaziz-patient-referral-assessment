@@ -7,21 +7,17 @@ import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,NgIf],
+  imports: [RouterOutlet,NgIf, ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  data:string = '';
+  isAuthenticated = false;
   
   constructor() {}
 
   ngOnInit() {
-    // this.dataService.getData().subscribe(response => {
-    //   this.data = response ;
-    //   console.log(this.data);
-      
-    // })
+   
   }
 
 }

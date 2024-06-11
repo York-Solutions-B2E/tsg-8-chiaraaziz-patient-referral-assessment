@@ -7,39 +7,34 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { PatientsService } from '../../services/patients.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
-
+import { HeaderComponent } from '../../shared/header/header.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [NgFor, RouterLink, RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule, FormsModule, MatChipsModule, NgIf],
+  imports: [NgFor, RouterLink, RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule, FormsModule, MatChipsModule, NgIf, HeaderComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
+  
   patients: Patient[] = [];
   patient!: Patient;
   id!: string;
 
-  constructor(private dashboardService: DashboardService,
-    private patientService: PatientsService,
-    private route: ActivatedRoute,
+  constructor(
+    private _dashboardService: DashboardService,
+    private _patientService: PatientsService,
+    private _router: Router
   ){}
 
-  ngOnInit(){
-   this.dashboardService.getPatients().subscribe(patients => {
-    this.patients = patients;
-    console.log(this.patients);
-    
-   })
-
+  public ngOnInit(): void{
    
+  this._dashboardService.getPatients().subscribe(patients => {
+    this.patients = patients;
+   });
   }
-  
-  
-
-
 }

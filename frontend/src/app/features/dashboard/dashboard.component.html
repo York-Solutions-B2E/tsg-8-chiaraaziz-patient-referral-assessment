@@ -1,21 +1,6 @@
 
 <div>
-    <mat-toolbar>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>Welcome to your Dashboard</span>
-        <span class="example-spacer"></span>
-        <a routerLink="/patient">
-            <button  mat-raised-button color="accent">
-                Add New Patient
-              </button>
-
-        </a>
-        
-       
-      </mat-toolbar>
-
+    <app-header></app-header>
     <div class="content-box" *ngFor="let patient of patients">
         <h3>{{patient.name}}</h3>
         <a routerLink="/patient/{{patient.id}}">
@@ -26,14 +11,8 @@
           <mat-chip-set aria-label="status">
             <mat-chip>{{patient.referralStatus}}</mat-chip>
           </mat-chip-set>
-         
-
         </div>
-        
-        
+
         <router-outlet></router-outlet>
-        
-        
-        
     </div>
 </div>
