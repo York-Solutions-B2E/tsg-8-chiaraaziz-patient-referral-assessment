@@ -20,7 +20,8 @@ import { HeaderComponent } from '../../shared/header/header.component';
 export class DashboardComponent {
   
   patients: Patient[] = [];
- 
+
+  
 
   constructor(
     private _patientService: PatientsService,
@@ -30,6 +31,11 @@ export class DashboardComponent {
    
   this._patientService.getPatients().subscribe(patients => {
     this.patients = patients;
+    patients.sort((a, b) =>
+    a.referralStatus.localeCompare(b.referralStatus));
+    
    });
   }
+ 
+
 }
