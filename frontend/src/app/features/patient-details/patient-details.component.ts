@@ -22,21 +22,10 @@ export class PatientDetailsComponent {
    
   patient: Patient = {} as Patient;
   id: string = '';
-  showEditPatient = false;
   
-  // openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-  //   this.dialog.open(DialogComponent, {
-  //     width: '250px',
-  //     enterAnimationDuration,
-  //     exitAnimationDuration,
-  //     data:{patients:{id:this.id}}
-  //   });
-  // }
-
   constructor(
     private patientService: PatientsService,
     private route: ActivatedRoute,
-    private router: Router,
     public dialog: MatDialog
   ){}
 
@@ -48,12 +37,7 @@ export class PatientDetailsComponent {
    
     this.patientService.getPatientById(this.id!).subscribe(response => {
       this.patient = response;
-      console.log(this.patient);
     })
   }
-  // onDeleteClicked(id: string): void{
-  //   this.patientService.deletePatientById(id).subscribe(() => {
-  //     this.router.navigate(['dashboard']);
-  //   })
-  // }
+
 }
