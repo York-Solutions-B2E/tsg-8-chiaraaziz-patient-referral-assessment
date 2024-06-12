@@ -48,11 +48,11 @@
                     <mat-option selected disabled value="" >Select a Referral Reason</mat-option>
                     <mat-option value="Certain Death" >Certain Death</mat-option>
                     <mat-option value="Second Opinion" >Second Opinion</mat-option>
-                    <mat-option value="Other">Other</mat-option>
+                    <mat-option value="Other">Needs Help</mat-option>
                 </mat-select>
-                <div *ngIf="patientForm.value.referralReason === 'Other'">
+                <!-- <div *ngIf="patientForm.value.referralReason === 'Other'">
                     <textarea matInput formControlName="referralReason"></textarea>
-                </div>
+                </div> -->
                 <div class="invalid" *ngIf="patientForm.controls['referralReason'].invalid && (isFormSubmitted || patientForm.controls['referralReason'].touched ||patientForm.controls['referralReason'].dirty)">
                     <span *ngIf="patientForm.controls['referralReason'].errors?.['required']">Reason required</span>
     
