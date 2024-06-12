@@ -16,7 +16,7 @@ import { PatientsService } from '../../../services/patients.service';
 @Component({
   selector: 'app-dialog',
   standalone: true,
-  imports: [MatDialogContent, MatDialogActions, MatDialogClose],
+  imports: [MatDialogContent, MatDialogActions, MatDialogClose,MatButtonModule],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.css'
 })
