@@ -4,8 +4,9 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>No</button>
+
   <a routerLink="/dashboard">
-    <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+    <button mat-button mat-dialog-close cdkFocusInitial (click)="onDeleteClicked()">Ok</button>
   </a>
   
 </mat-dialog-actions>

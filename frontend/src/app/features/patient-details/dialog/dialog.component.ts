@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import {
   MatDialogRef,
   MatDialogActions,
@@ -6,10 +6,12 @@ import {
   MatDialogContent,
   MatDialog,
   MatDialogTitle,
+  MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { Patient } from '../../../types';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { PatientsService } from '../../../services/patients.service';
 
 @Component({
   selector: 'app-dialog',
@@ -19,21 +21,20 @@ import { RouterLink } from '@angular/router';
   styleUrl: './dialog.component.css'
 })
 export class DialogComponent {
-  
-
-  patient:Patient = {} as Patient;
-
+  @Input() patient:Patient = {} as Patient;
 
   constructor(public dialog: MatDialog){}
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(DialogBoxDisplay, {
+    let box =this.dialog.open(DialogBoxDisplay, {
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
+      data: {
+        patient: this.patient
+      }
     });
   }
-  
 
 }
 
@@ -44,5 +45,15 @@ export class DialogComponent {
   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent, RouterLink],
 })
 export class DialogBoxDisplay{
-  constructor(public dialogRef: MatDialogRef<DialogBoxDisplay>) {}
+  constructor(
+    public dialogRef: MatDialogRef<DialogBoxDisplay>,
+    private _patientService: PatientsService,
+    private _router: Router,
+    @Inject(MAT_DIALOG_DATA) public data: { patient: Patient },
+  ) {}
+  onDeleteClicked(): void{
+      this._patientService.deletePatientById(this.data.patient.id).subscribe(() => {
+          this._router.navigate(['dashboard']);
+      })
+  }
 }

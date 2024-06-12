@@ -27,7 +27,7 @@
         Delete Patient
       </button>   -->
 
-      <app-dialog></app-dialog>
+      <app-dialog [patient]="patient"></app-dialog>
 
       <a routerLink="/patient/{{patient.id}}/edit">
         <button mat-raised-button>Edit Patient</button>
