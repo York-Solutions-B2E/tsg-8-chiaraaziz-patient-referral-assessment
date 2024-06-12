@@ -1,6 +1,9 @@
 package com.example.patient_data.PatientService;
 import java.util.List;
 import java.util.Optional;
+
+import javax.swing.text.html.Option;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +53,7 @@ public class PatientService {
             var p = patient.get();
             List<Note> notes = noteRepository.findAllNotesByPatient_Id(p.getId());
             p.setNotes(notes);
-            return Optional.of(p);
+            return  Optional.ofNullable(p);
         }
         return patient;
     }   
