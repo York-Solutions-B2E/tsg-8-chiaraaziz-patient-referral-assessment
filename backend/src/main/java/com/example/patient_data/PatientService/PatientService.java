@@ -23,7 +23,7 @@ public class PatientService {
    }
 
    //save a patient
-   public Patient savePatient(Patient patient) {
+   public Patient createPatient(Patient patient) {
         patient.setCreatedAt(java.time.LocalDate.now());
         patient.setUpdatedAt(java.time.LocalDate.now());
         patient = patientRepository.save(patient);

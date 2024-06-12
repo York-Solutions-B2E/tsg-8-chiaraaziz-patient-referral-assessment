@@ -39,7 +39,7 @@ public class PatientController {
     //create a new patient referral
     @PostMapping("/patient")
     public ResponseEntity<Patient> savePatient(@RequestBody Patient patient) {
-        Patient newPatient = patientService.savePatient(patient);
+        Patient newPatient = patientService.createPatient(patient);
         return ResponseEntity.ok(newPatient);
     }
 

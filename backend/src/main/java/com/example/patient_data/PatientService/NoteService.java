@@ -15,7 +15,7 @@ public class NoteService {
    }
 
    //save a note
-   public Note saveNote(Note note) {
+   public Note createNote(Note note) {
     return noteRepository.save(note);
    }
 
