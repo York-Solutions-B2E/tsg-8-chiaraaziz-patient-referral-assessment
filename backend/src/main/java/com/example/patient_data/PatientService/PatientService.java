@@ -12,8 +12,7 @@ import com.example.patient_data.entity.Patient;
 @Service
 public class PatientService {
 
-
-private  PatientRepository patientRepository;
+    private  PatientRepository patientRepository;
 
     private NoteRepository noteRepository;
 
@@ -22,8 +21,6 @@ private  PatientRepository patientRepository;
        this.patientRepository = patientRepository;
        this.noteRepository = noteRepository;
    }
-
-   
 
    //save a patient
    public Patient savePatient(Patient patient) {
