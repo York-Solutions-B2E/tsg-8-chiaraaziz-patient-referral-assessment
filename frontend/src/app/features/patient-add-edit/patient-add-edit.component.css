@@ -65,3 +65,7 @@
   .error {
     color: red;
   }
+  mat-card {
+    margin: 20px;
+    align-items: center;
+  }

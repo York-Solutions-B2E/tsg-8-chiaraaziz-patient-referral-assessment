@@ -5,11 +5,16 @@ import { FormBuilder, FormControl, Validators, ReactiveFormsModule, FormGroup } 
 import { Patient } from '../../types';
 import { NgIf } from '@angular/common';
 import { HeaderComponent } from '../../shared/header/header.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatButton } from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-patient-add-edit',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, HeaderComponent],
+  imports: [ReactiveFormsModule, NgIf, HeaderComponent, MatSelectModule, MatInputModule, MatFormFieldModule, MatButton, MatCardModule],
   templateUrl: './patient-add-edit.component.html',
   styleUrl: './patient-add-edit.component.css'
 })
@@ -56,7 +61,7 @@ export class PatientAddEditComponent implements OnInit {
       if (this.isEdit) {
         this.patientService.getPatientById(this.id).subscribe(data => {
           this.patient = data;
-          console.log('data from edit', this.patient);
+          
 
           //sets the data from the server in the form
           this.patientForm.controls['name'].setValue(this.patient.name);
@@ -75,6 +80,10 @@ export class PatientAddEditComponent implements OnInit {
     })  
   }
 
+  onOther() {
+
+  }
+
   onDropDownChange(){
     this.patient.referralReason = this.patientForm.value.referralReason;
     this.patient.referralStatus = this.patientForm.value.referralStatus;    
@@ -84,8 +93,11 @@ export class PatientAddEditComponent implements OnInit {
 
     const isFormValid = this.patientForm.valid;
     this.isFormSubmitted  = true;
+
     if (isFormValid) {
       this.patient = Object.assign(this.patient, this.patientForm.value);
+      console.log(this.patient);
+      
       if (!this.isEdit) {
         this.patientService.addPatient(this.patient).subscribe((p) => {
           this.router.navigate(['patient', p.id])
