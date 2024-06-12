@@ -10,11 +10,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatButton } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {NgxMaskDirective, NgxMaskPipe} from 'ngx-mask'
 
 @Component({
   selector: 'app-patient-add-edit',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, HeaderComponent, MatSelectModule, MatInputModule, MatFormFieldModule, MatButton, MatCardModule],
+  imports: [ReactiveFormsModule, NgIf, HeaderComponent, MatSelectModule, MatInputModule, MatFormFieldModule, MatButton, MatCardModule,NgxMaskDirective, NgxMaskPipe],
   templateUrl: './patient-add-edit.component.html',
   styleUrl: './patient-add-edit.component.css'
 })

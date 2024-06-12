@@ -30,7 +30,7 @@
     
             <div class="field">
                 <mat-label>*Phone Number</mat-label>
-                <input type="tel" formControlName="contactInfo" placeholder="999-999-9999"/>
+                <input type="tel" formControlName="contactInfo" placeholder="XXX-XXX-XXXX" mask="(000) 000 0000"/>
                 <div class="invalid" *ngIf="patientForm.controls['contactInfo'].invalid && (isFormSubmitted || patientForm.controls['contactInfo'].touched ||patientForm.controls['contactInfo'].dirty)">
                     <span *ngIf="patientForm.controls['contactInfo'].errors?.['required']">
                         <p>Phone is required</p>
