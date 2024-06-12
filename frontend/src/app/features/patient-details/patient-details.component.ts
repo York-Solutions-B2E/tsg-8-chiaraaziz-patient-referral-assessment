@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { RouterOutlet, RouterLink, ActivatedRoute, Router } from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
 import { Note, Patient } from '../../types';
@@ -19,19 +19,19 @@ import { HeaderComponent } from '../../shared/header/header.component';
   
 })
 export class PatientDetailsComponent {
-  
+   
   patient: Patient = {} as Patient;
   id: string = '';
   showEditPatient = false;
   
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(DialogComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-      data:{patients:{id:this.id}}
-    });
-  }
+  // openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  //   this.dialog.open(DialogComponent, {
+  //     width: '250px',
+  //     enterAnimationDuration,
+  //     exitAnimationDuration,
+  //     data:{patients:{id:this.id}}
+  //   });
+  // }
 
   constructor(
     private patientService: PatientsService,
@@ -44,16 +44,16 @@ export class PatientDetailsComponent {
     
     this.route.params.subscribe(params => {
       this.id = params['id']; // Access the 'id' parameter from the URL
-      console.log('id to delete:', this.id);})
+      });
    
     this.patientService.getPatientById(this.id!).subscribe(response => {
       this.patient = response;
       console.log(this.patient);
     })
   }
-  onDeleteClicked(id: string): void{
-    this.patientService.deletePatientById(id).subscribe(() => {
-      this.router.navigate(['dashboard']);
-    })
-  }
+  // onDeleteClicked(id: string): void{
+  //   this.patientService.deletePatientById(id).subscribe(() => {
+  //     this.router.navigate(['dashboard']);
+  //   })
+  // }
 }
