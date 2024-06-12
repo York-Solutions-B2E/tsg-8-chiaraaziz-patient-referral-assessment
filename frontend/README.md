@@ -37,6 +37,7 @@ Follow this link
    ` https://database.guide/how-to-install-azure-data-studio-on-a-mac/`
 
 
+
 ## Okta
 Install the okta cli with brew install --cask oktadeveloper/tap/okta
 
