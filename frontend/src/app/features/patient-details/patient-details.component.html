@@ -23,9 +23,11 @@
       <p>Date Created: {{patient.createdAt}}</p>
       <p>Date Updated: {{patient.updatedAt}}</p>   
 
-      <button mat-raised-button (click)="onDeleteClicked(id)" (click)="openDialog('0ms', '0ms')">
+      <!-- <button mat-raised-button (click)="onDeleteClicked(id)" (click)="openDialog('0ms', '0ms')">
         Delete Patient
-      </button>  
+      </button>   -->
+
+      <app-dialog></app-dialog>
 
       <a routerLink="/patient/{{patient.id}}/edit">
         <button mat-raised-button>Edit Patient</button>

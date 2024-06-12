@@ -4,16 +4,17 @@ import {
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
+  MatDialog,
+  MatDialogTitle,
 } from '@angular/material/dialog';
-import { RouterLink } from '@angular/router';
-import { PatientsService } from '../../../services/patients.service';
 import { Patient } from '../../../types';
-import { ActivatedRoute } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dialog',
   standalone: true,
-  imports: [MatDialogContent, MatDialogActions, RouterLink, MatDialogClose],
+  imports: [MatDialogContent, MatDialogActions, MatDialogClose],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.css'
 })
@@ -23,11 +24,25 @@ export class DialogComponent {
   patient:Patient = {} as Patient;
 
 
-  constructor(public dialogRef: MatDialogRef<DialogComponent>, private patientService:PatientsService, private route: ActivatedRoute,){}
+  constructor(public dialog: MatDialog){}
 
-  ngOnInit(){
- 
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(DialogBoxDisplay, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
   
 
+}
+
+@Component({
+  selector: 'dialog-box-display',
+  templateUrl: 'dialog-box-display.html',
+  standalone: true,
+  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent, RouterLink],
+})
+export class DialogBoxDisplay{
+  constructor(public dialogRef: MatDialogRef<DialogBoxDisplay>) {}
 }

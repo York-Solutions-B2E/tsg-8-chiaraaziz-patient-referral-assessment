@@ -24,14 +24,14 @@ export class PatientDetailsComponent {
   id: string = '';
   showEditPatient = false;
   
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(DialogComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-      data:{patients:{id:this.id}}
-    });
-  }
+  // openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  //   this.dialog.open(DialogComponent, {
+  //     width: '250px',
+  //     enterAnimationDuration,
+  //     exitAnimationDuration,
+  //     data:{patients:{id:this.id}}
+  //   });
+  // }
 
   constructor(
     private patientService: PatientsService,
