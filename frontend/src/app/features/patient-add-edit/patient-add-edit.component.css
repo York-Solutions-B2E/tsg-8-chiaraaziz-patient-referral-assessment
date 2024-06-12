@@ -69,3 +69,6 @@
     margin: 20px;
     align-items: center;
   }
+  mat-select{
+    color: #555;
+  }
