@@ -6,7 +6,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { PatientsService } from '../../services/patients.service';
-import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
 import { HeaderComponent } from '../../shared/header/header.component';
@@ -21,8 +20,7 @@ import { HeaderComponent } from '../../shared/header/header.component';
 export class DashboardComponent {
   
   patients: Patient[] = [];
-  patient!: Patient;
-  id!: string;
+ 
 
   constructor(
     private _patientService: PatientsService,
