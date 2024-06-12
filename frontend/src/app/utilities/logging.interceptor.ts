@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
-import { ErrorHandler, Injectable } from "@angular/core";
-import { catchError, tap } from "rxjs/operators";
-import { Observable, throwError } from "rxjs";
+import { Injectable } from "@angular/core";
+import { tap } from "rxjs/operators";
+import { Observable } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class ResponseInterceptor implements HttpInterceptor {
