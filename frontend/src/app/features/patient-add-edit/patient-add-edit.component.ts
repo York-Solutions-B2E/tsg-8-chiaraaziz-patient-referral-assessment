@@ -21,13 +21,12 @@ export class PatientAddEditComponent implements OnInit {
   patient:Patient = {} as Patient;
   id: string = '';
   isFormSubmitted = false;
-  isAllTouched = false;
 
 
     patientForm:FormGroup = this.formBuilder.group({
     name: new FormControl('',[Validators.required]),
     dateOfBirth: new FormControl('',[Validators.required]),
-    contactInfo: new FormControl('',[Validators.required, Validators.pattern('[0-9]{3}-[0-9]{3}-[0-9]{4}')]),
+    contactInfo: new FormControl('',[Validators.required, Validators.pattern('[0-9]{10}')]),
     referralReason : new FormControl('',[Validators.required]),
     referralStatus: new FormControl('', [Validators.required]),
     noteText: new FormControl('')

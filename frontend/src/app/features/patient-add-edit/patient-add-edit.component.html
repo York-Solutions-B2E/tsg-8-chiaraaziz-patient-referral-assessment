@@ -2,12 +2,13 @@
 <app-header></app-header>
 <form class="form" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
     <div class="content-box">
+
         <h2>
 
             Patient Information
         </h2>
         <div class="field">
-            <label class="label">Patient Name {{patientForm.get('name')?.value}}</label>
+            <label class="label">*Patient Name {{patientForm.get('name')?.value}}</label>
             <input type="text"  class="input" formControlName="name" placeholder="full patient name" />
             <div class="invalid" *ngIf="patientForm.controls['name'].invalid && (isFormSubmitted || patientForm.controls['name'].touched ||patientForm.controls['name'].dirty)">
                 <span *ngIf="patientForm.controls['name'].errors?.['required']">Name is required</span>
@@ -17,7 +18,7 @@
 
 
        <div class="field">
-            <label>Date Of Birth</label>
+            <label>*Date Of Birth</label>
             <input type="date" formControlName="dateOfBirth" />
             <div class="invalid" *ngIf="patientForm.controls['dateOfBirth'].invalid && (isFormSubmitted || patientForm.controls['dateOfBirth'].touched ||patientForm.controls['dateOfBirth'].dirty)">
                 <span *ngIf="patientForm.controls['dateOfBirth'].errors?.['required']">DOB is required</span>
@@ -27,10 +28,13 @@
         </div> 
 
         <div class="field">
-            <label>Phone Number</label>
+            <label>*Phone Number</label>
             <input type="tel" formControlName="contactInfo" placeholder="999-999-9999"/>
             <div class="invalid" *ngIf="patientForm.controls['contactInfo'].invalid && (isFormSubmitted || patientForm.controls['contactInfo'].touched ||patientForm.controls['contactInfo'].dirty)">
-                <span *ngIf="patientForm.controls['contactInfo'].errors?.['required']">Phone is required</span>
+                <span *ngIf="patientForm.controls['contactInfo'].errors?.['required']">
+                    <p>Phone is required</p>
+                    <p>Number must be formatted 999-999-999</p>
+                </span>
 
             </div>
             
@@ -38,7 +42,7 @@
         
 
         <div class="select">
-            <label>Select Referral Reason:</label>
+            <label>*Select Referral Reason:</label>
             <select formControlName="referralReason">Choose Reason
                 <option selected disabled value="" >Select a Referral Reason</option>
                 <option value="Certain Death" >Certain Death</option>
@@ -53,7 +57,7 @@
         </div>
 
         <div class="select">
-            <label>Select Referral Status:</label>
+            <label>*Select Referral Status:</label>
             <select formControlName="referralStatus">Choose Reason
                 <option selected disabled value="" >Select a Referral Status</option>
                 <option value="Accepted">Accepted</option>
@@ -77,6 +81,7 @@
         <div>
             <button type="submit" >{{buttonText}}</button>
         </div>
+        <p>* indicates a required field</p>
     </div>
 
 </form>
