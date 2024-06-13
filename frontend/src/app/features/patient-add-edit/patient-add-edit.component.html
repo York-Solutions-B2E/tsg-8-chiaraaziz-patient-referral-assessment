@@ -6,7 +6,7 @@
         <div class="content-box">
     
             <h2>
-    
+                {{ pageType }}
                 Patient Information
             </h2>
             <div class="field">
@@ -34,7 +34,6 @@
                 <div class="invalid" *ngIf="patientForm.controls['contactInfo'].invalid && (isFormSubmitted || patientForm.controls['contactInfo'].touched ||patientForm.controls['contactInfo'].dirty)">
                     <span *ngIf="patientForm.controls['contactInfo'].errors?.['required']">
                         <p>Phone is required</p>
-                        <p>Number must be formatted 999-999-999</p>
                     </span>
     
                 </div>
@@ -44,15 +43,15 @@
     
             <div class="select">
                 <mat-label>*Select Referral Reason:</mat-label>
-                <mat-select formControlName="referralReason">Choose Reason
+                <mat-select formControlName="referralReason" (click)='hide=!hide;'>Choose Reason 
                     <mat-option selected disabled value="" >Select a Referral Reason</mat-option>
                     <mat-option value="Certain Death" >Certain Death</mat-option>
                     <mat-option value="Second Opinion" >Second Opinion</mat-option>
-                    <mat-option value="Other">Needs Help</mat-option>
+                    <mat-option value="Other">Other</mat-option>
                 </mat-select>
-                <!-- <div *ngIf="patientForm.value.referralReason === 'Other'">
-                    <textarea matInput formControlName="referralReason"></textarea>
-                </div> -->
+                <div *ngIf="showReferralReasonOther">
+                    <textarea  matInput formControlName="referralReasonOther"></textarea>
+                </div>
                 <div class="invalid" *ngIf="patientForm.controls['referralReason'].invalid && (isFormSubmitted || patientForm.controls['referralReason'].touched ||patientForm.controls['referralReason'].dirty)">
                     <span *ngIf="patientForm.controls['referralReason'].errors?.['required']">Reason required</span>
     
