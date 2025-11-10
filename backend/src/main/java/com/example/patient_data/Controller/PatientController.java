@@ -24,15 +24,16 @@ public class PatientController {
 
     private PatientService patientService;
 
+    // Dependency Injection
     @Autowired
     public PatientController(PatientService patientService) {
         this.patientService = patientService;
     }
     
     //gets all patients in database
+    // http://localhost:8080/patient/all
     @RequestMapping("/patient/all")
-    public List<Patient> getAllPatients()
-    {
+    public List<Patient> getAllPatients() {
         return patientService.getAllPatients();        
     }
     
