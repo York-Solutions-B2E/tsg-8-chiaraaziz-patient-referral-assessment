@@ -7,6 +7,7 @@ import com.example.patient_data.entity.Note;
 
 @Service
 public class NoteService {
+
     private NoteRepository noteRepository;
 
     @Autowired
